@@ -8,7 +8,7 @@ import LoomVideo from "./components/LoomVideo";
 const DISPLAY_VIDEO_ON_GOING_MESSAGE = false;
 
 const LOOM_URL =
-  "https://www.loom.com/embed/91b208aa8b244019a1b39e8d4068648f?sid=23f1fd40-98cc-4adf-86c4-116125858b5c";
+  "https://www.loom.com/share/3ef39ef5bd364bd3a52395f643dd9b36?sid=14e2f812-89b0-4fc2-8c97-a2f2cd5c2f41";
 
 const VideoSection = () => {
   return (
