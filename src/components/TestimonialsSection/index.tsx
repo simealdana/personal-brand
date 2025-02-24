@@ -1,49 +1,48 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const testimonials = [
   {
     id: 1,
-    name: "Client A",
-    role: "Founder at Startup A",
-    text: "They delivered beyond expectations!",
-    image: "/images/testimonial1.jpg",
+    name: "Alex",
+    role: "Founder at SimpleTech",
+    text: "Simeon's consultation on our AI agent really helped us get started. His advice was practical and easy to implement.",
+    image: "/images/testimonial1.png",
   },
   {
     id: 2,
-    name: "Client B",
-    role: "CEO at Company B",
-    text: "An outstanding experience from start to finish.",
+    name: "Beth",
+    role: "CEO at Startup Hub",
+    text: "Thanks to Simeon's guidance, our SaaS platform launch was smooth and efficient.",
     image: "/images/testimonial2.jpg",
   },
   {
     id: 3,
-    name: "Client C",
-    role: "CTO at Tech C",
-    text: "Innovative solutions that boosted our growth.",
+    name: "Carlos",
+    role: "CTO at DevWorks",
+    text: "Simeon's insights were exactly what we needed to develop our custom app effectively.",
     image: "/images/testimonial3.jpg",
   },
   {
     id: 4,
-    name: "Client D",
-    role: "Product Lead at D-Tech",
-    text: "Remarkable insights and hands-on guidance.",
+    name: "Dana",
+    role: "Product Manager at InnovateX",
+    text: "I appreciated Simeon's friendly approach and clear advice, which really made a difference for our project.",
     image: "/images/testimonial4.jpg",
   },
   {
     id: 5,
-    name: "Client E",
-    role: "Entrepreneur at E Ventures",
-    text: "Professional and creative. Highly recommended!",
+    name: "Eric",
+    role: "Entrepreneur at StartSimple",
+    text: "Simeon's consultation was straightforward and helpful. It gave us a solid starting point for our digital venture.",
     image: "/images/testimonial5.jpg",
   },
   {
     id: 6,
-    name: "Client F",
-    role: "Investor at Fund F",
-    text: "A game-changer for our portfolio companies.",
+    name: "Fiona",
+    role: "Investor at FutureFund",
+    text: "I found Simeon's consulting very promising. His practical tips helped us streamline our digital strategy.",
     image: "/images/testimonial6.jpg",
   },
 ];
@@ -71,13 +70,6 @@ const TestimonialsSection = () => {
             transition={{ duration: 0.5, delay: i * 0.1 }}
             whileHover={{ scale: 1.02 }}
           >
-            <Image
-              src={testimonial.image}
-              alt={testimonial.name}
-              width={64}
-              height={64}
-              className="w-16 h-16 rounded-full object-cover mb-4"
-            />
             <h3 className="text-lg font-semibold text-gray-800">
               {testimonial.name}
             </h3>
