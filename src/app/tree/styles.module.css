@@ -1,0 +1,76 @@
+.linkButton {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.linkButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.linkButton:active {
+  transform: translateY(1px);
+}
+
+/* Ripple effect for buttons */
+.linkButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.5s, height 0.5s, opacity 0.5s;
+}
+
+.linkButton:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+  transition: 0s;
+}
+
+.socialIcon {
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.socialIcon:active {
+  transform: scale(0.95);
+}
+
+.profileContainer {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.profileContainer:hover {
+  transform: scale(1.05);
+}
+
+.gradientBackground {
+  background: linear-gradient(135deg, rgba(244, 170, 110, 0.4) 0%, rgba(227, 143, 143, 0.3) 50%, rgba(15, 23, 42, 1) 100%);
+  animation: gradientShift 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} 
