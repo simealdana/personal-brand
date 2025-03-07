@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
+import CategoryLink from "../components/CategoryLink";
 import {
   FEATURED_POSTS,
   MAIN_POSTS,
@@ -83,13 +84,7 @@ export default function AllPostsPage() {
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="flex items-center gap-2 mb-2">
-                    <Link
-                      href={`/blog/category/${post.category.toLowerCase()}`}
-                      className="text-xs font-medium bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {post.category}
-                    </Link>
+                    <CategoryLink category={post.category} />
                     <span className="text-xs text-gray-500">{post.date}</span>
                     {post.readTime && (
                       <span className="text-xs text-gray-500">

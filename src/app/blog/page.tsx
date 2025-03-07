@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "Stay updated with the latest technology news, tutorials, and insights on programming, AI, web development, and more.",
 };
 
+// Force static generation
+export const dynamic = "force-static";
+
 export default function BlogPage() {
   // Obtenemos el post más reciente para destacarlo
   const featuredPost = BLOG_POSTS[BLOG_POSTS.length - 1];
@@ -47,7 +50,7 @@ export default function BlogPage() {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-5xl font-black tracking-tighter">BLOG</h1>
           <Link
-            href="/blog"
+            href="/blog/all"
             className="bg-neutral-200 hover:bg-neutral-300 transition-colors px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium"
           >
             Read Our Blog <span className="text-lg">→</span>
