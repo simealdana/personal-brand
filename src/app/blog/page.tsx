@@ -90,7 +90,7 @@ export default function BlogPage() {
               {relatedPosts.map((slug: string, index: number) => {
                 const postData =
                   BLOG_POSTS.find((post) => post.slug === slug) ||
-                  BLOG_POSTS[0];
+                  BLOG_POSTS[index + 1];
                 return (
                   <ArticleCard
                     key={index}

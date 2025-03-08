@@ -26,7 +26,7 @@ export default function FeaturedArticle({
 
         <h2 className="text-3xl font-black mt-4 mb-6">{title}</h2>
 
-        <div className="mt-auto relative h-60 rounded-2xl overflow-hidden">
+        <div className="mt-auto relative h-[500px] rounded-2xl overflow-hidden">
           <Image src={image} alt={title} fill className="object-cover" />
         </div>
       </div>
