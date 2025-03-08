@@ -8,7 +8,7 @@ export type LinkItem = {
 export const LINKS: LinkItem[] = [
   { label: "Website", href: "/" },
   { label: "Blog", href: "/blogs" },
-  { label: "Guides", href: "/blogs#guides" },
+  { label: "Guides", href: "/blog/guides" },
   { label: "Contact me", href: "/#contact-me" },
 ];
 
