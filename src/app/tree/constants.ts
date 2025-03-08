@@ -7,7 +7,7 @@ export type LinkItem = {
 // Constants for links
 export const LINKS: LinkItem[] = [
   { label: "Website", href: "/" },
-  { label: "Blog", href: "/blogs" },
+  { label: "Blog", href: "/blog" },
   { label: "Guides", href: "/blog/guides" },
   { label: "Contact me", href: "/#contact-me" },
 ];
