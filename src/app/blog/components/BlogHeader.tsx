@@ -23,7 +23,7 @@ export default function BlogHeader() {
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <Link
-              href="/"
+              href="/blog"
               className="text-neutral-700 hover:text-black transition-colors"
             >
               Home
@@ -33,6 +33,12 @@ export default function BlogHeader() {
               className="text-neutral-700 hover:text-black transition-colors"
             >
               Guides
+            </Link>
+            <Link
+              href="/blog/categories"
+              className="text-neutral-700 hover:text-black transition-colors"
+            >
+              Categories
             </Link>
             <Link
               href="/#contact-me"

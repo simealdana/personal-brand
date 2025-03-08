@@ -5,10 +5,12 @@ import CategoryTag from "../components/CategoryTag";
 import { BLOG_POSTS } from "../data/posts";
 import { BlogPost } from "../types";
 
+// Update the interface to properly extend PageProps
 interface BlogPostPageProps {
   params: {
     slug: string;
   };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 // Get blog post by slug

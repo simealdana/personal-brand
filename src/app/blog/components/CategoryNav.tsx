@@ -37,7 +37,7 @@ export default function CategoryNav() {
           const categoryPath = `/blog/categories/${category.slug}`;
           return (
             <Link
-              key={category.id}
+              key={category.slug}
               href={categoryPath}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 isActive(categoryPath)

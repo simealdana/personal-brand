@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import BlogHeader from "../components/BlogHeader";
 import { CATEGORIES, BLOG_POSTS } from "../data/posts";
 
 export const metadata: Metadata = {
@@ -23,8 +22,6 @@ export default function CategoriesPage() {
 
   return (
     <div className="bg-neutral-50 min-h-screen">
-      <BlogHeader />
-
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <div className="mb-8">

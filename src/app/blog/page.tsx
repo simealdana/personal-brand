@@ -34,12 +34,6 @@ export default function BlogPage() {
   // Get related posts for the main post
   const relatedPosts = mainPost.relatedPosts;
 
-  // Get tutorial post (using the AI post as a tutorial for demonstration)
-  const tutorialPost = {
-    ...sidePost,
-    duration: "5 Min",
-  };
-
   // Get categories for display
   const displayCategories = CATEGORIES.slice(0, 8);
 
@@ -151,18 +145,6 @@ export default function BlogPage() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Tutorial Section */}
-        <div className="mt-6">
-          <TutorialCard
-            slug={tutorialPost.slug}
-            title={tutorialPost.title}
-            category={tutorialPost.category}
-            duration={tutorialPost.duration}
-            date={tutorialPost.date}
-            image={tutorialPost.image}
-          />
         </div>
 
         {/* Posts adicionales */}
