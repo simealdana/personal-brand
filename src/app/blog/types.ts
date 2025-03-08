@@ -18,7 +18,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   category: string;
-  categories: string[];
+  categories?: string[];
   date: string;
   author: string;
   authorImage: string;
