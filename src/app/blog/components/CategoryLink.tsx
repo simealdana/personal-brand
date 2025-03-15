@@ -9,7 +9,7 @@ interface CategoryLinkProps {
 export default function CategoryLink({ category }: CategoryLinkProps) {
   return (
     <Link
-      href={`/blog/category/${category.toLowerCase()}`}
+      href={`/blog/categories/${category.toLowerCase()}`}
       className="text-xs font-medium bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors"
       onClick={(e) => e.stopPropagation()}
     >

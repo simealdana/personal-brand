@@ -5,6 +5,7 @@ import { effective_prompts_for_website_style_replication } from "./effective_pro
 import { best_development_tools_2024 } from "./best_development_tools_2024";
 import { getting_started_with_nextjs } from "./getting_started_with_nextjs";
 import { crafting_effective_llm_prompts } from "./crafting_effective_llm_prompts";
+import { programming_backend_with_ai } from "./programming_backend_with_ai";
 
 // Define categories
 export const CATEGORIES: CategoryType[] = [
@@ -92,6 +93,12 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     ...crafting_effective_llm_prompts,
     relatedPosts: crafting_effective_llm_prompts.relatedPosts.map(
+      (post) => post.slug
+    ),
+  },
+  {
+    ...programming_backend_with_ai,
+    relatedPosts: programming_backend_with_ai.relatedPosts.map(
       (post) => post.slug
     ),
   },

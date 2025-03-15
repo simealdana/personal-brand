@@ -10,7 +10,7 @@ export default function CategoryPill({ category }: CategoryPillProps) {
   const slug = category.toLowerCase().replace(/\s+/g, "-");
 
   return (
-    <Link href={`/blog/category/${slug}`}>
+    <Link href={`/blog/categories/${slug}`}>
       <div className="bg-white text-black px-3 py-1 rounded-full text-xs font-medium hover:bg-black hover:text-white transition-colors">
         {category}
       </div>
