@@ -9,6 +9,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  // Configure allowed image domains
+  images: {
+    domains: ["isodljjfofmsskiuobrl.supabase.co"],
+  },
 };
 
 module.exports = nextConfig;
