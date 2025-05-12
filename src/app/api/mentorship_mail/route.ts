@@ -11,6 +11,12 @@ interface AttachmentFile {
   contentType: FileType;
 }
 
+interface ResendAttachment {
+  filename: string;
+  content: Buffer;
+  contentType: FileType;
+}
+
 const SUPPORTED_FILE_TYPES = {
   "application/pdf": ".pdf",
   "image/jpeg": ".jpg",
@@ -34,11 +40,14 @@ export async function POST(request: Request) {
       );
     }
 
-    // Convert files to array if it's a single object
-    const filesArray = files ? (Array.isArray(files) ? files : [files]) : [];
+    let attachments: ResendAttachment[] = [];
 
-    // Validate files if present
-    if (filesArray.length > 0) {
+    // Only process files if they are provided
+    if (files) {
+      // Convert files to array if it's a single object
+      const filesArray = Array.isArray(files) ? files : [files];
+
+      // Validate files
       for (const file of filesArray as AttachmentFile[]) {
         if (!file.filename || !file.content || !file.contentType) {
           return NextResponse.json(
@@ -60,6 +69,12 @@ export async function POST(request: Request) {
           );
         }
       }
+
+      attachments = filesArray.map((file: AttachmentFile) => ({
+        filename: file.filename,
+        content: Buffer.from(file.content, "base64"),
+        contentType: file.contentType,
+      }));
     }
 
     const { data: emailData, error: emailError } = await resend.emails.send({
@@ -67,11 +82,7 @@ export async function POST(request: Request) {
       to,
       subject,
       html,
-      attachments: filesArray.map((file: AttachmentFile) => ({
-        filename: file.filename,
-        content: Buffer.from(file.content, "base64"),
-        contentType: file.contentType,
-      })),
+      attachments,
     });
 
     if (emailError) {
