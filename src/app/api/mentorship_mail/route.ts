@@ -34,9 +34,12 @@ export async function POST(request: Request) {
       );
     }
 
+    // Convert files to array if it's a single object
+    const filesArray = files ? (Array.isArray(files) ? files : [files]) : [];
+
     // Validate files if present
-    if (files && Array.isArray(files)) {
-      for (const file of files as AttachmentFile[]) {
+    if (filesArray.length > 0) {
+      for (const file of filesArray as AttachmentFile[]) {
         if (!file.filename || !file.content || !file.contentType) {
           return NextResponse.json(
             { error: "Each file must have filename, content, and contentType" },
@@ -64,12 +67,11 @@ export async function POST(request: Request) {
       to,
       subject,
       html,
-      attachments:
-        files?.map((file: AttachmentFile) => ({
-          filename: file.filename,
-          content: Buffer.from(file.content, "base64"),
-          contentType: file.contentType,
-        })) || [],
+      attachments: filesArray.map((file: AttachmentFile) => ({
+        filename: file.filename,
+        content: Buffer.from(file.content, "base64"),
+        contentType: file.contentType,
+      })),
     });
 
     if (emailError) {
