@@ -1,36 +1,44 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 
-const SparkleEffect = ({ total }: { total: number }) => {
+// Generamos los elementos de efectos visuales una sola vez
+const generateSparkleEffects = (total: number) => {
   return [...Array(total)].map((_, i) => {
     const size = Math.random() * 6 + 3;
     const duration = 2 + Math.random() * 3;
     const delay = Math.random() * 2;
+    const left = `${Math.random() * 100}%`;
+    const top = `${Math.random() * 100}%`;
+    const opacity = Math.random() * 0.5 + 0.2;
+    const xMove = Math.random() * 100 - 50;
+    const yMove = Math.random() * 100 - 50;
+    const scale = Math.random() + 0.2;
+    const isWhite = Math.random() > 0.5;
 
     return (
       <motion.div
         key={`sparkle-${i}`}
         className={`absolute rounded-full ${
-          Math.random() > 0.5 ? "bg-gray-800" : "bg-gray-600"
+          isWhite ? "bg-gray-800" : "bg-gray-600"
         }`}
         style={{
           width: size,
           height: size,
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          opacity: Math.random() * 0.5 + 0.2,
+          left,
+          top,
+          opacity,
         }}
         animate={{
-          x: [0, Math.random() * 100 - 50],
-          y: [0, Math.random() * 100 - 50],
-          scale: [1, Math.random() + 0.2],
+          x: [0, xMove],
+          y: [0, yMove],
+          scale: [1, scale],
           opacity: [null, 0.1, 0.5],
         }}
         transition={{
-          duration: duration,
+          duration,
           repeat: Infinity,
           repeatType: "reverse",
-          delay: delay,
+          delay,
           ease: "easeInOut",
         }}
       />
@@ -38,9 +46,14 @@ const SparkleEffect = ({ total }: { total: number }) => {
   });
 };
 
-const ShiningStars = ({ total }: { total: number }) => {
+const generateShiningStars = (total: number) => {
   return [...Array(total)].map((_, i) => {
     const size = Math.random() * 4 + 2;
+    const left = `${Math.random() * 100}%`;
+    const top = `${Math.random() * 100}%`;
+    const duration = 2 + Math.random() * 2;
+    const delay = Math.random() * 2;
+
     return (
       <motion.div
         key={`star-${i}`}
@@ -48,40 +61,50 @@ const ShiningStars = ({ total }: { total: number }) => {
         style={{
           width: size,
           height: size,
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
+          left,
+          top,
         }}
         animate={{
           scale: [1, 1.5, 1],
           opacity: [0.4, 0.8, 0.4],
         }}
         transition={{
-          duration: 2 + Math.random() * 2,
+          duration,
           repeat: Infinity,
-          delay: Math.random() * 2,
+          delay,
         }}
       />
     );
   });
 };
 
-export const StarBackground = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={`relative overflow-hidden bg-white ${className}`}>
-      <div className="absolute inset-0">
-        <SparkleEffect total={100} />
-        <ShiningStars total={80} />
-      </div>
+// Componente memoizado para evitar re-renders
+export const StarBackground = React.memo(
+  ({
+    children,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => {
+    // Generamos los efectos visuales una sola vez usando useMemo
+    const sparkleEffects = useMemo(() => generateSparkleEffects(100), []);
+    const shiningStars = useMemo(() => generateShiningStars(80), []);
 
-      <div className="relative z-10">{children}</div>
-    </div>
-  );
-};
+    return (
+      <div className={`relative overflow-hidden bg-white ${className}`}>
+        <div className="absolute inset-0">
+          {sparkleEffects}
+          {shiningStars}
+        </div>
+
+        <div className="relative z-10">{children}</div>
+      </div>
+    );
+  }
+);
+
+// Añadimos un displayName para debugging
+StarBackground.displayName = "StarBackground";
 
 export default StarBackground;

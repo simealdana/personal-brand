@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleApplyForMentorship = () => {
+  const handleGetAccess = () => {
     window.location.href = "/apply";
   };
 
@@ -62,9 +62,9 @@ export default function Navigation() {
 
               <Button
                 className="bg-black text-white px-4 py-2 rounded-full hover:bg-neutral-800 transition-colors font-bold"
-                onClick={handleApplyForMentorship}
+                onClick={handleGetAccess}
               >
-                Apply for Mentorship
+                Get Access
               </Button>
             </div>
 
@@ -130,11 +130,11 @@ export default function Navigation() {
               <Button
                 className="bg-black text-white px-6 py-3 rounded-full hover:bg-neutral-800 transition-colors text-xl mt-4 font-bold"
                 onClick={() => {
-                  handleApplyForMentorship();
+                  handleGetAccess();
                   setIsMobileMenuOpen(false);
                 }}
               >
-                Apply for Mentorship
+                Get Access
               </Button>
             </nav>
           </div>

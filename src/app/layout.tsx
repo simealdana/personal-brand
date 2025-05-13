@@ -102,6 +102,23 @@ export default function RootLayout({
           src="https://elevenlabs.io/convai-widget/index.js"
           strategy="afterInteractive"
         />
+        <style>
+          {`
+            /* Custom styles for ElevenLabs Convai Widget */
+            elevenlabs-convai {
+              --elevenlabs-convai-bottom: 80px !important;
+              --elevenlabs-convai-right: 20px !important;
+            }
+            
+            @media (max-width: 768px) {
+              elevenlabs-convai {
+                --elevenlabs-convai-bottom: 100px !important;
+                --elevenlabs-convai-right: 10px !important;
+                --elevenlabs-convai-size: 50px !important;
+              }
+            }
+          `}
+        </style>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
