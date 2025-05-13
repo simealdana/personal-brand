@@ -92,7 +92,7 @@ export const StarBackground = React.memo(
     const shiningStars = useMemo(() => generateShiningStars(80), []);
 
     return (
-      <div className={`relative overflow-hidden bg-white ${className}`}>
+      <div className={`relative overflow-hidden ${className}`}>
         <div className="absolute inset-0">
           {sparkleEffects}
           {shiningStars}
