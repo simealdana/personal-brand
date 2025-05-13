@@ -9,13 +9,8 @@ import Link from "next/link";
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleContactMe = () => {
-    const currentUrl = window.location.href;
-    if (currentUrl.includes("#contact-me")) {
-      window.location.href = currentUrl.replace("#contact-me", "");
-    } else {
-      window.location.href = `${currentUrl}#contact-me`;
-    }
+  const handleApplyForMentorship = () => {
+    window.location.href = "/apply";
   };
 
   // const handleGoToTool = (type: string) => {
@@ -48,28 +43,28 @@ export default function Navigation() {
             <div className="hidden md:flex items-center gap-6">
               <Link
                 href="/about"
-                className="text-neutral-700 hover:text-black transition-colors"
+                className="font-semibold text-neutral-700 hover:text-black transition-colors"
               >
                 About Me
               </Link>
               <Link
                 href="/blog"
-                className="text-neutral-700 hover:text-black transition-colors"
+                className="font-semibold text-neutral-700 hover:text-black transition-colors"
               >
                 Blog
               </Link>
               <Link
                 href="/downloads"
-                className="text-neutral-700 hover:text-black transition-colors"
+                className="font-semibold text-neutral-700 hover:text-black transition-colors"
               >
                 Downloads
               </Link>
 
               <Button
-                className="bg-black text-white px-4 py-2 rounded-full hover:bg-neutral-800 transition-colors"
-                onClick={handleContactMe}
+                className="bg-black text-white px-4 py-2 rounded-full hover:bg-neutral-800 transition-colors font-bold"
+                onClick={handleApplyForMentorship}
               >
-                Contact Me
+                Apply for Mentorship
               </Button>
             </div>
 
@@ -113,33 +108,33 @@ export default function Navigation() {
             <nav className="flex flex-col gap-8 items-center">
               <Link
                 href="/about"
-                className="text-neutral-700 hover:text-black transition-colors text-xl py-2"
+                className="font-semibold text-neutral-700 hover:text-black transition-colors text-xl py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About Me
               </Link>
               <Link
                 href="/blog"
-                className="text-neutral-700 hover:text-black transition-colors text-xl py-2"
+                className="font-semibold text-neutral-700 hover:text-black transition-colors text-xl py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Blog
               </Link>
               <Link
-                href="/tools/ai-prompt-generator"
-                className="text-neutral-700 hover:text-black transition-colors text-xl py-2"
+                href="/downloads"
+                className="font-semibold text-neutral-700 hover:text-black transition-colors text-xl py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                AI Prompt Generator
+                Downloads
               </Link>
               <Button
-                className="bg-black text-white px-6 py-3 rounded-full hover:bg-neutral-800 transition-colors text-xl mt-4"
+                className="bg-black text-white px-6 py-3 rounded-full hover:bg-neutral-800 transition-colors text-xl mt-4 font-bold"
                 onClick={() => {
-                  handleContactMe();
+                  handleApplyForMentorship();
                   setIsMobileMenuOpen(false);
                 }}
               >
-                Contact Me
+                Apply for Mentorship
               </Button>
             </nav>
           </div>

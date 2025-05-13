@@ -1,4 +1,3 @@
-import ContactForm from "@/components/ContactForm";
 import InteractiveHero from "@/components/InteractiveHero";
 import Navigation from "@/components/Navigation";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -13,7 +12,6 @@ export default function Home() {
         <VideoSection />
       </div>
       <TestimonialsSection />
-      <ContactForm />
     </div>
   );
 }

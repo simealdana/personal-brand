@@ -300,10 +300,10 @@ export default function ApplyPage() {
         </div>
       )}
 
-      {/* Split-screen container with reduced padding */}
-      <div className="h-screen flex flex-col md:flex-row md:items-stretch">
+      {/* Split-screen container - removed fixed height for mobile */}
+      <div className="flex flex-col md:flex-row md:min-h-screen">
         {/* Left side - Hero content */}
-        <div className="w-full md:w-1/2 md:h-screen flex flex-col justify-center p-4 md:p-8 lg:p-12">
+        <div className="w-full md:w-1/2 flex flex-col justify-center p-4 md:p-8 lg:p-12 md:sticky md:top-0 md:h-screen">
           <div className="max-w-lg mx-auto">
             {/* Desktop heading with floating badge */}
             <div className="hidden md:flex items-center gap-2 mb-4">
@@ -395,8 +395,8 @@ export default function ApplyPage() {
         </div>
 
         {/* Right side - Form - Center it and optimize space */}
-        <div className="w-full md:w-1/2 md:h-screen overflow-y-auto flex items-center justify-center p-4 md:p-6">
-          <div className="w-full max-w-lg bg-white/90 backdrop-blur-md rounded-xl p-5 border border-gray-200 shadow-lg">
+        <div className="w-full md:w-1/2 flex items-start justify-center p-4 md:p-6 pt-6 md:pt-12">
+          <div className="w-full max-w-lg bg-white/90 backdrop-blur-md rounded-xl p-5 border border-gray-200 shadow-lg mb-8">
             <h2 className="text-xl font-bold text-gray-800 mb-1">Apply Now</h2>
             <p className="text-gray-600 mb-4 text-sm">
               Let&apos;s work together to bring your AI vision to life.

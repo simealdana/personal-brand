@@ -97,6 +97,11 @@ export default function RootLayout({
             gtag('config', 'G-FHXXMQZTG1');
           `}
         </Script>
+        {/* ElevenLabs Convai Widget Script */}
+        <Script
+          src="https://elevenlabs.io/convai-widget/index.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -110,6 +115,13 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+        {/* ElevenLabs Convai Widget */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              '<elevenlabs-convai agent-id="jJEt1YiA5kzfg53OLDMD"></elevenlabs-convai>',
+          }}
+        />
       </body>
     </html>
   );
