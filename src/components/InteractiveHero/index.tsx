@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, CheckCircle } from "lucide-react";
 import StarBackground from "../StarBackground";
+import Image from "next/image";
 
 const InteractiveHero = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -11,6 +12,7 @@ const InteractiveHero = () => {
     minutes: 0,
     seconds: 0,
   });
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -55,7 +57,7 @@ const InteractiveHero = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="flex justify-start mb-4"
+              className="flex justify-start mb-4 "
             >
               <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 flex items-center gap-2 border border-white/20">
                 <Sparkles className="w-5 h-5 text-yellow-400" />
@@ -66,12 +68,12 @@ const InteractiveHero = () => {
             </motion.div>
 
             {/* Main content */}
-            <div className="relative text-left">
+            <div className="relative text-left grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Main text */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="space-y-8"
+                className="space-y-4"
               >
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
                   Launch Your First AI <br className="hidden sm:block" />
@@ -146,6 +148,72 @@ const InteractiveHero = () => {
                       <div className="text-xs">Secs</div>
                     </div>
                   </div>
+                </div>
+              </motion.div>
+
+              {/* Instructor Image with Blob Shape */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="hidden lg:flex justify-center items-center"
+              >
+                <div className="relative w-full max-w-xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-950/0 via-blue-500/10 to-blue-950/0 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-blue-950/0 rounded-full blur-2xl"></div>
+                  <div
+                    className="relative overflow-hidden"
+                    style={{
+                      width: "120%",
+                      height: "120%",
+                      borderRadius: "60% 40% 70% 30% / 60% 30% 70% 40%",
+                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)",
+                    }}
+                  >
+                    {!imageLoaded && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div
+                          className="w-full h-full bg-gradient-to-r from-blue-800/30 to-blue-600/30 animate-pulse"
+                          style={{
+                            borderRadius: "60% 40% 70% 30% / 60% 30% 70% 40%",
+                          }}
+                        >
+                          <div
+                            className="h-full w-full bg-gradient-to-tr from-blue-500/10 to-transparent animate-pulse"
+                            style={{
+                              animationDuration: "1.5s",
+                              animationDelay: "0.2s",
+                            }}
+                          ></div>
+                          <div
+                            className="absolute inset-0 bg-gradient-to-bl from-transparent to-blue-500/10 animate-pulse"
+                            style={{
+                              animationDuration: "2s",
+                              animationDelay: "0.5s",
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    )}
+                    <Image
+                      src="/images/instructor.jpeg"
+                      alt="Simeon - AI Instructor"
+                      width={700}
+                      height={900}
+                      className={`object-cover w-full h-full transition-opacity duration-500 ${
+                        imageLoaded ? "opacity-100" : "opacity-0"
+                      }`}
+                      priority
+                      onLoad={() => setImageLoaded(true)}
+                      onError={() => {
+                        console.log("Image failed to load");
+                        setImageLoaded(true); // Show error state instead of infinite loading
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-blue-950/80"></div>
+                  </div>
+                  <div className="absolute -inset-10 bg-blue-500/5 blur-3xl rounded-full"></div>
                 </div>
               </motion.div>
             </div>
