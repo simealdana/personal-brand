@@ -5,6 +5,7 @@ export interface DownloadableResource {
   description: string; // Description of the resource
   image: string; // Path to the image
   file_path: string; // Path to the file in Supabase storage
+  emailSent?: boolean; // Optional flag to track if email was sent
 }
 
 // Type for storing resources

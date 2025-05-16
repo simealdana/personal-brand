@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import { Download, ArrowLeft } from "lucide-react";
+import { Download, ArrowLeft, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import EmailModal from "@/components/EmailModal";
@@ -67,48 +67,11 @@ export default function DownloadPage() {
 
     setIsModalOpen(false);
 
-    // Trigger download
-    if (data.download_url) {
-      try {
-        // Crear una función para descargar archivos usando fetch + blob
-        const downloadFile = async (url: string, filename: string) => {
-          try {
-            // Fetch el archivo como blob
-            const response = await fetch(url);
-            if (!response.ok) throw new Error("Network response was not ok");
-
-            const blob = await response.blob();
-
-            // Crear URL para el blob
-            const blobUrl = window.URL.createObjectURL(blob);
-
-            // Crear link y forzar descarga
-            const a = document.createElement("a");
-            a.style.display = "none";
-            a.href = blobUrl;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-
-            // Limpiar después de usar
-            window.URL.revokeObjectURL(blobUrl);
-            document.body.removeChild(a);
-          } catch (error) {
-            console.error("Error downloading file:", error);
-            throw error;
-          }
-        };
-
-        // Obtener nombre de archivo
-        const filename =
-          data.fileName || resource.file_path.split("/").pop() || "download";
-
-        // Iniciar descarga
-        downloadFile(data.download_url, filename);
-      } catch (err) {
-        console.error("Download error:", err);
-      }
-    }
+    // Show success message instead of triggering download
+    setResource({
+      ...resource,
+      emailSent: true,
+    });
   };
 
   if (loading) {
@@ -184,26 +147,46 @@ export default function DownloadPage() {
       {/* Right light side */}
       <div className="w-1/2 bg-white p-12 flex flex-col">
         <div className="max-w-md mx-auto w-full flex flex-col justify-center h-full">
-          <div className="mb-8 text-center">
-            <h2 className="text-2xl font-bold mb-2">
-              Download this resource now
-            </h2>
-            <p className="text-gray-600">{resource.description}</p>
-          </div>
+          {resource.emailSent ? (
+            <div className="text-center">
+              <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Check your email</h2>
+              <p className="text-gray-600 mb-6">
+                We&apos;ve sent a download link to your email address. Please
+                check your inbox to access your resource.
+              </p>
+              <Link href="/downloads">
+                <Button variant="outline" className="mt-4">
+                  Browse more resources
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <>
+              <div className="mb-8 text-center">
+                <h2 className="text-2xl font-bold mb-2">
+                  Download this resource now
+                </h2>
+                <p className="text-gray-600">{resource.description}</p>
+              </div>
 
-          <Button
-            onClick={handleDownloadClick}
-            className="w-full py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg text-lg font-medium"
-            size="lg"
-          >
-            <Download className="h-5 w-5 mr-2" />
-            Download now
-          </Button>
+              <Button
+                onClick={handleDownloadClick}
+                className="w-full py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg text-lg font-medium"
+                size="lg"
+              >
+                <Download className="h-5 w-5 mr-2" />
+                Get download link
+              </Button>
 
-          <p className="text-gray-500 text-sm text-center mt-4">
-            By downloading this resource, you agree to receive more information
-            about our products and services.
-          </p>
+              <p className="text-gray-500 text-sm text-center mt-4">
+                We&apos;ll send a download link to your email address to verify
+                it&apos;s you.
+              </p>
+            </>
+          )}
         </div>
       </div>
 
