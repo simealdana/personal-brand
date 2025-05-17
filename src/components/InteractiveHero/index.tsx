@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, CheckCircle } from "lucide-react";
 import StarBackground from "../StarBackground";
-import Image from "next/image";
+import AnimatedImageContainer from "../AnimatedImageContainer";
 
 const InteractiveHero = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,7 +12,6 @@ const InteractiveHero = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -159,61 +158,13 @@ const InteractiveHero = () => {
                 className="hidden lg:flex justify-center items-center"
               >
                 <div className="relative w-full max-w-xl">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-950/0 via-blue-500/10 to-blue-950/0 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-blue-950/0 rounded-full blur-2xl"></div>
-                  <div
-                    className="relative overflow-hidden"
-                    style={{
-                      width: "120%",
-                      height: "120%",
-                      borderRadius: "60% 40% 70% 30% / 60% 30% 70% 40%",
-                      boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)",
-                    }}
-                  >
-                    {!imageLoaded && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div
-                          className="w-full h-full bg-gradient-to-r from-blue-800/30 to-blue-600/30 animate-pulse"
-                          style={{
-                            borderRadius: "60% 40% 70% 30% / 60% 30% 70% 40%",
-                          }}
-                        >
-                          <div
-                            className="h-full w-full bg-gradient-to-tr from-blue-500/10 to-transparent animate-pulse"
-                            style={{
-                              animationDuration: "1.5s",
-                              animationDelay: "0.2s",
-                            }}
-                          ></div>
-                          <div
-                            className="absolute inset-0 bg-gradient-to-bl from-transparent to-blue-500/10 animate-pulse"
-                            style={{
-                              animationDuration: "2s",
-                              animationDelay: "0.5s",
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                    )}
-                    <Image
-                      src="/images/instructor.jpeg"
-                      alt="Simeon - AI Instructor"
-                      width={700}
-                      height={900}
-                      className={`object-cover w-full h-full transition-opacity duration-500 ${
-                        imageLoaded ? "opacity-100" : "opacity-0"
-                      }`}
-                      priority
-                      onLoad={() => setImageLoaded(true)}
-                      onError={() => {
-                        console.log("Image failed to load");
-                        setImageLoaded(true); // Show error state instead of infinite loading
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/80 via-transparent to-transparent"></div>
-                    <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-blue-950/80"></div>
-                  </div>
-                  <div className="absolute -inset-10 bg-blue-500/5 blur-3xl rounded-full"></div>
+                  <AnimatedImageContainer
+                    src="/images/instructor.jpeg"
+                    alt="Simeon - AI Instructor"
+                    size="md"
+                    priority={true}
+                    customSize={{ width: 600, height: 700 }}
+                  />
                 </div>
               </motion.div>
             </div>

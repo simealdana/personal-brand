@@ -4,6 +4,7 @@ import { getAllResources } from "@/lib/resources";
 import { ArrowRight, Star, Users, Code, Zap, X } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { getFIleUrl } from "@/lib/utils";
+import AnimatedImageContainer from "@/components/AnimatedImageContainer";
 
 export default async function DownloadsPage() {
   const resources = await getAllResources();
@@ -38,13 +39,13 @@ export default async function DownloadsPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="md:w-1/3 relative h-48 w-full md:h-64 rounded-lg overflow-hidden">
-              <Image
+            <div className="md:w-1/3 relative h-48 w-full md:h-64">
+              <AnimatedImageContainer
                 src="/images/instructor.jpeg"
                 alt="AI Mentorship Program"
+                size="sm"
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                className="h-full"
               />
             </div>
           </div>
