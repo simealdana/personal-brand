@@ -3,8 +3,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import { Download, ArrowLeft, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import {
+  Download,
+  ArrowLeft,
+  CheckCircle,
+  ArrowRight,
+  Star,
+} from "lucide-react";
 import Link from "next/link";
 import EmailModal from "@/components/EmailModal";
 import { DownloadableResource } from "@/types/download";
@@ -93,9 +98,9 @@ export default function DownloadPage() {
         </p>
         <Link
           href="/downloads"
-          className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors flex items-center"
+          className="group px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-full font-bold hover:bg-blue-50 transition-all flex items-center gap-2"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" />
+          <ArrowLeft className="h-4 w-4" />
           Back to all downloads
         </Link>
       </div>
@@ -103,12 +108,12 @@ export default function DownloadPage() {
   }
 
   return (
-    <div className="h-screen flex">
+    <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left dark side */}
-      <div className="w-1/2 bg-gray-900 text-white p-12 flex flex-col">
+      <div className="w-full md:w-1/2 bg-gray-900 text-white p-8 md:p-12 flex flex-col">
         <Link
           href="/downloads"
-          className="inline-flex items-center text-gray-300 hover:text-white mb-12"
+          className="inline-flex items-center text-gray-300 hover:text-white mb-8 md:mb-12"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to resources
@@ -121,7 +126,9 @@ export default function DownloadPage() {
           <span className="text-lg">{resource.title}</span>
         </div>
 
-        <h1 className="text-5xl font-bold mb-8">Download resource</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-8">
+          Download resource
+        </h1>
 
         <div className="flex items-center space-x-3 border border-gray-700 rounded-md p-4 mb-4">
           <div className="h-12 w-12 relative rounded-md overflow-hidden">
@@ -145,8 +152,8 @@ export default function DownloadPage() {
       </div>
 
       {/* Right light side */}
-      <div className="w-1/2 bg-white p-12 flex flex-col">
-        <div className="max-w-md mx-auto w-full flex flex-col justify-center h-full">
+      <div className="w-full md:w-1/2 bg-white p-8 md:p-12 flex flex-col">
+        <div className="max-w-md mx-auto w-full flex flex-col h-full">
           {resource.emailSent ? (
             <div className="text-center">
               <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
@@ -158,10 +165,32 @@ export default function DownloadPage() {
                 check your inbox to access your resource.
               </p>
               <Link href="/downloads">
-                <Button variant="outline" className="mt-4">
+                <button className="group px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-full font-bold hover:bg-blue-50 transition-all mt-4">
                   Browse more resources
-                </Button>
+                </button>
               </Link>
+
+              {/* Mentorship Promo for Success State */}
+              <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-100">
+                <div className="flex items-center gap-2 mb-3">
+                  <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                  <h3 className="font-semibold text-blue-900">
+                    Tired of learning alone with just downloadable resources?
+                  </h3>
+                </div>
+                <p className="text-gray-600 mb-4 text-left">
+                  Unlike most instructors who create digital products and then
+                  leave you on your own, my 1:1 AI Mentorship Program gives you
+                  direct access to personalized guidance that will rapidly
+                  advance your career.
+                </p>
+                <Link href="/apply">
+                  <button className="group px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-full font-bold hover:bg-blue-50 transition-all w-full flex items-center justify-center gap-2">
+                    Get 1:1 Mentorship Access
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </Link>
+              </div>
             </div>
           ) : (
             <>
@@ -172,19 +201,40 @@ export default function DownloadPage() {
                 <p className="text-gray-600">{resource.description}</p>
               </div>
 
-              <Button
+              <button
                 onClick={handleDownloadClick}
-                className="w-full py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg text-lg font-medium"
-                size="lg"
+                className="group px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-full font-bold hover:bg-blue-50 transition-all w-full flex items-center justify-center gap-2 text-lg"
               >
-                <Download className="h-5 w-5 mr-2" />
+                <Download className="h-5 w-5" />
                 Get download link
-              </Button>
+              </button>
 
-              <p className="text-gray-500 text-sm text-center mt-4">
+              <p className="text-gray-500 text-sm text-center mt-4 mb-12">
                 We&apos;ll send a download link to your email address to verify
                 it&apos;s you.
               </p>
+
+              {/* Mentorship Promo */}
+              <div className="mt-auto p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-100">
+                <div className="flex items-center gap-2 mb-3">
+                  <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                  <h3 className="font-semibold text-blue-900">
+                    Resources are useful, but real growth needs guidance
+                  </h3>
+                </div>
+                <p className="text-gray-600 mb-4 text-left">
+                  Free resources can only take you so far. Most instructors
+                  create digital products and communities where you&apos;re
+                  quickly forgotten. My 1:1 mentorship gives you direct,
+                  personalized education designed for your career goals.
+                </p>
+                <Link href="/apply">
+                  <button className="group px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-full font-bold hover:bg-blue-50 transition-all w-full flex items-center justify-center gap-2">
+                    Explore 1:1 Mentorship
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </Link>
+              </div>
             </>
           )}
         </div>

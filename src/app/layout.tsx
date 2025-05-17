@@ -116,6 +116,10 @@ export default function RootLayout({
                 --elevenlabs-convai-right: 10px !important;
                 --elevenlabs-convai-size: 50px !important;
               }
+              
+              .hide-on-download-mobile elevenlabs-convai {
+                display: none !important;
+              }
             }
           `}
         </style>
@@ -132,13 +136,40 @@ export default function RootLayout({
           />
         </noscript>
         {children}
-        {/* ElevenLabs Convai Widget */}
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              '<elevenlabs-convai agent-id="jJEt1YiA5kzfg53OLDMD"></elevenlabs-convai>',
-          }}
-        />
+        {/* ElevenLabs Convai Widget with conditional display */}
+        <div id="convai-widget-container">
+          <Script id="convai-widget-controller" strategy="afterInteractive">
+            {`
+              // Función para verificar si estamos en una página de descarga y aplicar la clase cuando sea necesario
+              function updateConvaiWidgetVisibility() {
+                const path = window.location.pathname;
+                const container = document.getElementById('convai-widget-container');
+                if (container) {
+                  // Verificar si estamos en la ruta /download/[id]
+                  if (path.match(/\\/download\\/[^\\/]+$/)) {
+                    container.className = 'hide-on-download-mobile';
+                  } else {
+                    container.className = '';
+                  }
+                }
+              }
+              
+              // Ejecutar al cargar la página
+              updateConvaiWidgetVisibility();
+              
+              // También manejar cambios en la navegación del lado del cliente (para SPA)
+              if (typeof window !== 'undefined') {
+                window.addEventListener('popstate', updateConvaiWidgetVisibility);
+              }
+            `}
+          </Script>
+          <div
+            dangerouslySetInnerHTML={{
+              __html:
+                '<elevenlabs-convai agent-id="jJEt1YiA5kzfg53OLDMD"></elevenlabs-convai>',
+            }}
+          />
+        </div>
       </body>
     </html>
   );
