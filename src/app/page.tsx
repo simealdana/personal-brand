@@ -1,6 +1,5 @@
 import InteractiveHero from "@/components/InteractiveHero";
 import Navigation from "@/components/Navigation";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import WhatsIncludedSection from "@/components/WhatsIncludedSection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
@@ -19,7 +18,7 @@ export default function Home() {
       <WhoIsItForSection />
       <HowItWorksSection />
       <AboutMentorSection />
-      <TestimonialsSection />
+
       <OtherOptionsSection />
       <PricingSection />
     </div>
