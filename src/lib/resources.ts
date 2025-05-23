@@ -7,7 +7,8 @@ import supabase from "@/lib/supabase";
 export async function getAllResources(): Promise<DownloadableResource[]> {
   const { data, error } = await supabase
     .from("downloadable_resources")
-    .select("*");
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error("Error fetching resources:", error);

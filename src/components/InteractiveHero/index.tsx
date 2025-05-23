@@ -58,7 +58,7 @@ const InteractiveHero = () => {
               animate={{ opacity: 1 }}
               className="flex justify-start mb-4 "
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 flex items-center gap-2 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-1 flex items-center gap-2 border border-white/20">
                 <Sparkles className="w-5 h-5 text-yellow-400" />
                 <span className="text-white text-base font-medium">
                   Only 12 spots available
@@ -75,9 +75,8 @@ const InteractiveHero = () => {
                 className="space-y-4"
               >
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                  Launch Your First AI <br className="hidden sm:block" />
-                  Agent — With <br className="hidden sm:block" />
-                  Personal Guidance
+                  Launch Your First AI Agent <br className="hidden sm:block" />
+                  With Personal Guidance
                 </h1>
 
                 <p className="text-xl sm:text-2xl text-yellow-400 max-w-2xl px-0">

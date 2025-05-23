@@ -39,7 +39,7 @@ export default async function DownloadsPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="md:w-1/3 relative h-48 w-full md:h-64">
+            <div className="hidden md:block md:w-1/3 relative h-48 w-full md:h-64">
               <AnimatedImageContainer
                 src="/images/instructor.jpeg"
                 alt="AI Mentorship Program"
@@ -52,7 +52,7 @@ export default async function DownloadsPage() {
         </div>
       </div>
 
-      <div className="pt-20 pb-20 px-4">
+      <div className="pt-10 pb-10 px-4">
         <div className="container mx-auto">
           <h1 className="text-4xl font-bold text-center mb-6 text-gray-900">
             Download Free Resources
