@@ -10,12 +10,14 @@ interface AnimatedLinkProps {
   href: string;
   label: string;
   index: number;
+  target?: string;
 }
 
 export default function AnimatedLink({
   href,
   label,
   index,
+  target,
 }: AnimatedLinkProps) {
   return (
     <motion.div
@@ -30,7 +32,12 @@ export default function AnimatedLink({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
-      <Link href={href} className="tree-page__link w-full" passHref>
+      <Link
+        href={href}
+        className="tree-page__link w-full"
+        passHref
+        target={target}
+      >
         <Button
           variant="outline"
           className={cn(

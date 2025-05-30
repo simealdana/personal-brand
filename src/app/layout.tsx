@@ -121,6 +121,10 @@ export default function RootLayout({
                 display: none !important;
               }
             }
+            
+            .hide-on-tree elevenlabs-convai {
+              display: none !important;
+            }
           `}
         </style>
       </head>
@@ -148,7 +152,12 @@ export default function RootLayout({
                   // Verificar si estamos en la ruta /download/[id]
                   if (path.match(/\\/download\\/[^\\/]+$/)) {
                     container.className = 'hide-on-download-mobile';
-                  } else {
+                  } 
+                  // Verificar si estamos en la ruta /tree
+                  else if (path === '/tree') {
+                    container.className = 'hide-on-tree';
+                  } 
+                  else {
                     container.className = '';
                   }
                 }

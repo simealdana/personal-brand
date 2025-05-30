@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import StarBackground from "../StarBackground";
 
-const LOOM_URL = "https://www.youtube.com/embed/your-video-id";
+const YOUTUBE_URL = "https://www.youtube.com/embed/VeNvjblXxCg";
 
 const CombinedMentorshipVideoSection = () => {
   return (
@@ -32,16 +32,42 @@ const CombinedMentorshipVideoSection = () => {
 
         <div className="relative max-w-2xl mx-auto">
           {/* Video section */}
-          <div className="relative w-full aspect-video bg-gray-100 rounded-xl overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative w-full aspect-video bg-gray-100 rounded-xl overflow-hidden mb-8"
+          >
             <iframe
               className="w-full h-full"
-              src={LOOM_URL}
+              src={YOUTUBE_URL}
               title="Mentorship Explanation"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-          </div>
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mb-12"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-700 transition-all flex items-center gap-3 mx-auto shadow-lg"
+              onClick={() => (window.location.href = "/apply")}
+            >
+              Apply for AI Mentorship
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+            <p className="text-sm text-gray-600 mt-3">
+              Limited spots available • Personal 1:1 guidance
+            </p>
+          </motion.div>
 
           {/* Feature cards */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -95,13 +121,6 @@ const CombinedMentorshipVideoSection = () => {
               guidance, async support, and a structure that leads to real
               results.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="mt-8 bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors"
-              onClick={() => (window.location.href = "/apply")}
-            >
-              Discover More
-            </motion.button>
           </motion.div>
         </div>
       </div>

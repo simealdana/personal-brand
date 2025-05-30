@@ -25,15 +25,33 @@ const AboutMentorSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative rounded-xl overflow-hidden"
+            className="relative w-full max-w-lg mx-auto md:mx-0"
           >
-            <Image
-              src="/images/simeon-mentor.jpg"
-              alt="Simeon - AI Mentor"
-              width={600}
-              height={600}
-              className="object-cover rounded-xl"
-            />
+            {/* Background glow effects - contained */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-950/0 via-blue-500/10 to-blue-950/0 rounded-xl blur-3xl animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-blue-950/0 rounded-xl blur-2xl"></div>
+
+            {/* Main image container */}
+            <div
+              className="relative w-full aspect-square overflow-hidden rounded-xl"
+              style={{
+                boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)",
+              }}
+            >
+              <Image
+                src="/images/meet_tutor.jpeg"
+                alt="Simeon - AI Mentor"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+              {/* Gradient overlays - same as AnimatedImageContainer */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/80 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-blue-950/80"></div>
+            </div>
+
+            {/* Additional outer glow - contained */}
+            <div className="absolute -inset-4 bg-blue-500/5 blur-2xl rounded-full -z-10"></div>
           </motion.div>
 
           <motion.div

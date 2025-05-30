@@ -2,15 +2,19 @@
 export type LinkItem = {
   label: string;
   href: string;
+  target?: string;
 };
 
 // Constants for links
 export const LINKS: LinkItem[] = [
-  { label: "Website", href: "/" },
-  { label: "About Me", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Guides", href: "/blog/guides" },
-  { label: "Contact me", href: "/#contact-me" },
+  { label: "New Course", href: "/course-waitlist", target: "_self" },
+  { label: "Download Resources", href: "/downloads", target: "_self" },
+  { label: "Blog", href: "/blog", target: "_self" },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@simeonaldana",
+    target: "_blank",
+  },
 ];
 
 // Constants for social media links
@@ -36,7 +40,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
 // User info
 export const USER_INFO = {
   name: "Simeon | AI Instructor",
-  description: "Mindfulness and wellbeing",
+  description:
+    "8+ years building real systems in the industry. Tired of tutorials that leave you stuck? Ready to build real AI agents that actually work? Stop learning alone and get the 1:1 guidance you need to finally launch something.",
   profileImage: "/images/logo.png",
   logo: "/images/logo.svg",
   copyright: "© 2025 Cover io",

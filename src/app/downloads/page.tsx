@@ -41,7 +41,7 @@ export default async function DownloadsPage() {
             </div>
             <div className="hidden md:block md:w-1/3 relative h-48 w-full md:h-64">
               <AnimatedImageContainer
-                src="/images/instructor.jpeg"
+                src="/images/meet_tutor.jpeg"
                 alt="AI Mentorship Program"
                 size="sm"
                 fill
