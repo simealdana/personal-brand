@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import ConditionalFooter from "@/components/ConditionalFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -140,6 +141,7 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+        <ConditionalFooter />
         {/* ElevenLabs Convai Widget with conditional display */}
         <div id="convai-widget-container">
           <Script id="convai-widget-controller" strategy="afterInteractive">
