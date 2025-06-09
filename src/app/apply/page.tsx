@@ -545,7 +545,7 @@ export default function ApplyPage() {
                     htmlFor="investment"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Ready to invest <strong>$500</strong>?{" "}
+                    Ready to invest <strong>$800 to $1500</strong>?{" "}
                     <span className="text-red-500">*</span>
                   </label>
                   <select

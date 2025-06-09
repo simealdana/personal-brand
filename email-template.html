@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Email Template - Simeon | AI Instructor</title>
+    <style>
+      /* Reset styles for email clients */
+      body,
+      table,
+      td,
+      p,
+      div,
+      span {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f8fafc;
+        width: 100% !important;
+        min-height: 100vh;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      table {
+        border-collapse: collapse;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+        max-width: 100%;
+      }
+
+      .email-wrapper {
+        min-height: 100vh;
+        background-color: #f8fafc;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header styles - based on Navigation component */
+      .header {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid #e5e7eb;
+        padding: 16px 24px;
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .brand-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #111827;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .nav-link {
+        color: #4b5563;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .nav-link:hover {
+        color: #000000;
+      }
+
+      .cta-button {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        background-color: #374151;
+      }
+
+      /* Main content area */
+      .main-content {
+        padding: 40px 24px 80px 24px;
+        background-color: #ffffff;
+        flex: 1;
+        min-height: 500px;
+      }
+
+      /* Footer styles - based on Footer component */
+      .footer {
+        background-color: #111827;
+        color: #ffffff;
+        padding: 60px 16px;
+        margin-top: auto;
+      }
+
+      .footer-content {
+        text-align: center;
+      }
+
+      .footer-brand {
+        margin-bottom: 24px;
+      }
+
+      .footer-logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-bottom: 12px;
+      }
+
+      .footer-brand-name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .footer-tagline {
+        color: #9ca3af;
+        font-size: 14px;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 24px;
+        margin-top: 24px;
+      }
+
+      .social-link {
+        display: inline-block;
+        padding: 12px;
+        background-color: #1f2937;
+        border-radius: 50%;
+        text-decoration: none;
+      }
+
+      .social-link:hover {
+        background-color: #374151;
+      }
+
+      .social-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .copyright {
+        color: #9ca3af;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      /* Responsive styles */
+      @media only screen and (max-width: 600px) {
+        .container {
+          width: 100% !important;
+          min-height: 100vh;
+        }
+
+        .header {
+          padding: 12px 16px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .main-content {
+          padding: 24px 16px 60px 16px;
+          min-height: 400px;
+        }
+
+        .footer {
+          padding: 40px 16px;
+        }
+
+        .social-links {
+          gap: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-wrapper">
+      <table
+        width="100%"
+        cellpadding="0"
+        cellspacing="0"
+        role="presentation"
+        style="min-height: 100vh"
+      >
+        <tr>
+          <td align="center" style="vertical-align: top">
+            <div class="container">
+              <!-- Header Section -->
+              <table
+                width="100%"
+                cellpadding="0"
+                cellspacing="0"
+                role="presentation"
+                class="header"
+              >
+                <tr>
+                  <td>
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="header-content">
+                          <!-- Logo Section -->
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="logo-section">
+                                <img
+                                  src="https://simeon.cover-io.com/images/logo.png"
+                                  alt="Simeon | AI Instructor"
+                                  class="logo"
+                                  width="50"
+                                  height="50"
+                                />
+                                <a
+                                  href="https://simeon.cover-io.com"
+                                  class="brand-name"
+                                  >Simeon | AI Instructor</a
+                                >
+                              </td>
+                            </tr>
+                          </table>
+
+                          <!-- Navigation Links (hidden on mobile) -->
+                          <table
+                            cellpadding="0"
+                            cellspacing="0"
+                            class="nav-links"
+                          >
+                            <tr>
+                              <td style="width: 24px"></td>
+                              <td>
+                                <a
+                                  href="https://simeon.cover-io.com/course-waitlist"
+                                  class="nav-link"
+                                  >Course</a
+                                >
+                              </td>
+                              <td style="width: 24px"></td>
+                              <td>
+                                <a
+                                  href="https://simeon.cover-io.com/downloads"
+                                  class="nav-link"
+                                  >Downloads</a
+                                >
+                              </td>
+                              <td style="width: 24px"></td>
+                              <td>
+                                <a
+                                  href="https://simeon.cover-io.com/apply"
+                                  class="cta-button"
+                                  >1:1 Mentorship</a
+                                >
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Main Content Section -->
+              <table
+                width="100%"
+                cellpadding="0"
+                cellspacing="0"
+                role="presentation"
+              >
+                <tr>
+                  <td class="main-content">
+                    <!-- YOUR CUSTOM CONTENT GOES HERE -->
+                    <h1
+                      style="
+                        font-size: 28px;
+                        font-weight: bold;
+                        color: #111827;
+                        margin-bottom: 16px;
+                        text-align: center;
+                      "
+                    >
+                      Email Title Goes Here
+                    </h1>
+
+                    <p
+                      style="
+                        font-size: 16px;
+                        color: #4b5563;
+                        margin-bottom: 16px;
+                        text-align: center;
+                      "
+                    >
+                      This is where you can add your custom email content.
+                      Replace this section with your actual message,
+                      announcements, newsletters, or any other content you want
+                      to send.
+                    </p>
+
+                    <div style="text-align: center; margin: 32px 0">
+                      <a
+                        href="https://simeon.cover-io.com/apply"
+                        style="
+                          background-color: #3b82f6;
+                          color: white;
+                          padding: 12px 24px;
+                          border-radius: 25px;
+                          text-decoration: none;
+                          font-weight: bold;
+                          display: inline-block;
+                        "
+                      >
+                        Call to Action Button
+                      </a>
+                    </div>
+
+                    <p
+                      style="
+                        font-size: 14px;
+                        color: #6b7280;
+                        text-align: center;
+                      "
+                    >
+                      Add any additional information, disclaimers, or secondary
+                      messages here.
+                    </p>
+                    <!-- END OF CUSTOM CONTENT AREA -->
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Footer Section -->
+              <table
+                width="100%"
+                cellpadding="0"
+                cellspacing="0"
+                role="presentation"
+                class="footer"
+              >
+                <tr>
+                  <td class="footer-content">
+                    <!-- Brand Section -->
+
+                    <!-- Social Media Links -->
+                    <div class="social-links">
+                      <a
+                        href="https://www.youtube.com/@simeonaldana"
+                        class="social-link"
+                        target="_blank"
+                      >
+                        <img
+                          src="https://simeon.cover-io.com/images/youtube-logo.png"
+                          alt="YouTube"
+                          class="social-icon"
+                          width="20"
+                          height="20"
+                        />
+                      </a>
+                      <a
+                        href="https://www.tiktok.com/@simeonaldana"
+                        class="social-link"
+                        target="_blank"
+                      >
+                        <img
+                          src="https://simeon.cover-io.com/images/tiktok-logo.png"
+                          alt="TikTok"
+                          class="social-icon"
+                          width="20"
+                          height="20"
+                        />
+                      </a>
+                    </div>
+
+                    <!-- Unsubscribe Link -->
+                    <p
+                      style="
+                        color: #9ca3af;
+                        font-size: 12px;
+                        text-align: center;
+                        margin-bottom: 16px;
+                      "
+                    >
+                      Don't want to receive these emails?
+                      <a
+                        href="https://simeon.cover-io.com/unsubscribe"
+                        style="color: #3b82f6; text-decoration: underline"
+                      >
+                        Unsubscribe here
+                      </a>
+                    </p>
+
+                    <!-- Copyright -->
+                    <p class="copyright">
+                      &copy; 2025 Simeon | AI Instructor. All rights reserved.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
