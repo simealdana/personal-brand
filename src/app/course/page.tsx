@@ -56,6 +56,18 @@ export default function CourseWaitlistPage() {
                 className="mt-4"
                 href="https://simeon-s-site-a58b.thinkific.com/enroll/3410007?price_id=4322550"
               />
+              <p className="mt-2 text-sm text-gray-500">
+                Or,{" "}
+                <a
+                  href="https://github.com/simealdana/ai-agent-n8n-course/tree/main"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-gray-700"
+                >
+                  explore the free resources on GitHub
+                </a>
+                .
+              </p>
             </div>
           </div>
         </div>
@@ -136,6 +148,18 @@ export default function CourseWaitlistPage() {
           Start your journey today and become a proficient AI agent developer.
         </p>
         <PurchaseButton href="https://simeon-s-site-a58b.thinkific.com/enroll/3410007?price_id=4322550" />
+        <p className="mt-4 text-sm text-gray-500">
+          Or,{" "}
+          <a
+            href="https://github.com/simealdana/ai-agent-n8n-course/tree/main"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-gray-700"
+          >
+            explore the free resources on GitHub
+          </a>
+          .
+        </p>
       </section>
     </StarBackground>
   );
