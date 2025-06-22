@@ -83,7 +83,7 @@ export default function UnsubscribePage() {
               </Link>
 
               <Link
-                href="/course-waitlist"
+                href="/course"
                 className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg border border-blue-600 hover:bg-blue-50 transition-colors"
               >
                 View Course

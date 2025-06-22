@@ -118,6 +118,11 @@ export const courseModules: CourseModule[] = [
         description:
           "Techniques for creating effective prompts according to the type of task the agent should perform",
       },
+      {
+        title: "Prompt to AI Agents",
+        description:
+          "Practical examples of prompts for different types of agents and tasks",
+      },
     ],
   },
   {

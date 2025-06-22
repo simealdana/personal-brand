@@ -1,8 +1,9 @@
 import { Star, Code, Users, Bot } from "lucide-react";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import StarBackground from "@/components/StarBackground";
-import CourseWaitlistForm from "./components/CourseWaitlistForm";
 import CourseModulesSection from "./components/CourseModulesSection";
+import PurchaseButton from "@/components/PurchaseButton";
 
 export default function CourseWaitlistPage() {
   return (
@@ -43,7 +44,19 @@ export default function CourseWaitlistPage() {
             </div>
 
             {/* Email Form Component */}
-            <CourseWaitlistForm />
+            <div className="flex flex-col items-center gap-4">
+              <Image
+                src="/images/course_image.png"
+                alt="AI Agent with N8N for Beginners"
+                width={400}
+                height={228}
+                className="rounded-lg shadow-2xl border border-gray-200"
+              />
+              <PurchaseButton
+                className="mt-4"
+                href="https://simeon-s-site-a58b.thinkific.com/enroll/3410007?price_id=4322550"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -112,6 +125,17 @@ export default function CourseWaitlistPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-20 px-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Ready to Build with AI?
+        </h2>
+        <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Start your journey today and become a proficient AI agent developer.
+        </p>
+        <PurchaseButton href="https://simeon-s-site-a58b.thinkific.com/enroll/3410007?price_id=4322550" />
       </section>
     </StarBackground>
   );

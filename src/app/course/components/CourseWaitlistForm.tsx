@@ -31,7 +31,7 @@ export default function CourseWaitlistForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/course-waitlist", {
+      const response = await fetch("/api/course", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
