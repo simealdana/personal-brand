@@ -98,6 +98,22 @@ export default function RootLayout({
             gtag('config', 'G-FHXXMQZTG1');
           `}
         </Script>
+
+        {/* Google Ads */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17220172198"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-17220172198');
+          `}
+        </Script>
         {/* ElevenLabs Convai Widget Script */}
         <Script
           src="https://elevenlabs.io/convai-widget/index.js"
