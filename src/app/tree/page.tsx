@@ -30,26 +30,6 @@ export default function TreePage() {
           alt={USER_INFO.name}
         />
 
-        {/* Name */}
-        <div
-          className="bg-white/90 backdrop-blur-sm px-6 py-3 shadow-lg border border-white/30"
-          style={{ borderRadius: "60% 40% 70% 30% / 50% 60% 40% 50%" }}
-        >
-          <h1 className="tree-page__name text-2xl font-black text-gray-900">
-            {USER_INFO.name}
-          </h1>
-        </div>
-
-        {/* Description */}
-        <div
-          className="bg-white/85 backdrop-blur-sm px-6 py-4 shadow-md border border-white/20"
-          style={{ borderRadius: "40% 60% 50% 70% / 60% 30% 70% 40%" }}
-        >
-          <p className="tree-page__description text-gray-800 text-center font-bold">
-            {USER_INFO.description}
-          </p>
-        </div>
-
         {/* Video Section */}
         <div className="w-full mb-6">
           <div className="relative w-full aspect-video bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20">

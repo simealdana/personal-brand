@@ -565,9 +565,8 @@ export default function ApplyPage() {
                     }}
                   >
                     <option value="">Select</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                    <option value="Not sure yet">Not sure yet</option>
+                    <option value="Yes">Yes, I&apos;m ready to invest</option>
+                    <option value="No">No, I&apos;m not ready to invest</option>
                   </select>
                   {errors.investment && (
                     <p className="mt-1 text-xs text-red-500">

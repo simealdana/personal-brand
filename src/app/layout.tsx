@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     description:
       "Simeon is a digital product consultant specialized in building AI agents, SaaS solutions, and custom apps. Let's create your next big product together!",
     images: [`${DOMAIN}/og-image.jpg`],
-    creator: "@tuUsuarioTwitter", // opcional
+    creator: "@tuUsuarioTwitter",
   },
   robots: {
     index: true,
@@ -84,7 +84,6 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-K93WQLGJ');
           `}
         </Script>
-        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-FHXXMQZTG1"
           strategy="afterInteractive"
@@ -94,12 +93,9 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-FHXXMQZTG1');
           `}
         </Script>
-
-        {/* Google Ads */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17220172198"
@@ -110,35 +106,29 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'AW-17220172198');
           `}
         </Script>
-        {/* ElevenLabs Convai Widget Script */}
         <Script
           src="https://elevenlabs.io/convai-widget/index.js"
           strategy="afterInteractive"
         />
         <style>
           {`
-            /* Custom styles for ElevenLabs Convai Widget */
             elevenlabs-convai {
               --elevenlabs-convai-bottom: 80px !important;
               --elevenlabs-convai-right: 20px !important;
             }
-            
             @media (max-width: 768px) {
               elevenlabs-convai {
                 --elevenlabs-convai-bottom: 100px !important;
                 --elevenlabs-convai-right: 10px !important;
                 --elevenlabs-convai-size: 50px !important;
               }
-              
               .hide-on-download-mobile elevenlabs-convai {
                 display: none !important;
               }
             }
-            
             .hide-on-tree elevenlabs-convai {
               display: none !important;
             }
@@ -158,20 +148,16 @@ export default function RootLayout({
         </noscript>
         {children}
         <ConditionalFooter />
-        {/* ElevenLabs Convai Widget with conditional display */}
         <div id="convai-widget-container">
           <Script id="convai-widget-controller" strategy="afterInteractive">
             {`
-              // Función para verificar si estamos en una página de descarga y aplicar la clase cuando sea necesario
               function updateConvaiWidgetVisibility() {
                 const path = window.location.pathname;
                 const container = document.getElementById('convai-widget-container');
                 if (container) {
-                  // Verificar si estamos en la ruta /download/[id]
-                  if (path.match(/\\/download\\/[^\\/]+$/)) {
+                  if (path.match(/\/download\/[^\/]+$/)) {
                     container.className = 'hide-on-download-mobile';
                   } 
-                  // Verificar si estamos en la ruta /tree
                   else if (path === '/tree') {
                     container.className = 'hide-on-tree';
                   } 
@@ -180,11 +166,7 @@ export default function RootLayout({
                   }
                 }
               }
-              
-              // Ejecutar al cargar la página
               updateConvaiWidgetVisibility();
-              
-              // También manejar cambios en la navegación del lado del cliente (para SPA)
               if (typeof window !== 'undefined') {
                 window.addEventListener('popstate', updateConvaiWidgetVisibility);
               }
