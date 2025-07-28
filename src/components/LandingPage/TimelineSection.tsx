@@ -7,9 +7,11 @@ import { Paragraph } from "@/lib/ui/text";
 import { ProgressSteps, type Step } from "@/lib/ui/progress-steps";
 import Image from "next/image";
 import { SimpleCheckIcon } from "@/lib/ui/icons/simple-check.icon";
+import { useDevice } from "@/hooks/useDevice";
 
 export default function TimelineSection() {
   const { colors } = useTheme();
+  const { isMobile } = useDevice();
 
   const partnerLogos = [
     { name: "n8n", src: "/images/utils/logos/n8n-logo.png" },
@@ -92,6 +94,7 @@ export default function TimelineSection() {
           <ProgressSteps
             steps={timelineSteps}
             currentStep={2}
+            variant={isMobile ? "vertical" : "horizontal"}
             itemIcon={<SimpleCheckIcon />}
             itemClassName="font-medium"
           />
