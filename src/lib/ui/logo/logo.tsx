@@ -37,13 +37,13 @@ export default function Logo({
           <Image src="/images/logo.png" alt="Logo" width={100} height={100} />
         </div>
       </div>
-      <div className="flex flex-col">
-        <div className="flex items-center space-x-2">
+      <div className="flex flex-col ml-2">
+        <div className="flex items-center space-x-2 justify-start">
           <H2>{title}</H2>
           {showVerifiedIcon && <BlueCheckIcon />}
         </div>
         {subtitle && (
-          <Span>
+          <Span className="text-left">
             {subtitle}
             {showRocketIcon && " 🚀"}
           </Span>
