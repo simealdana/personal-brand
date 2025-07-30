@@ -11,6 +11,9 @@ interface ButtonProps {
   className?: string;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
+  bg?: string;
+  textColor?: string;
+  borderColor?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -23,10 +26,23 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   disabled = false,
   type = "button",
+  bg,
+  textColor,
+  borderColor,
 }) => {
   const { colors } = useTheme();
 
   const getVariantStyles = (): React.CSSProperties => {
+    // If custom colors are provided, use them
+    if (bg || textColor || borderColor) {
+      return {
+        backgroundColor: bg || "transparent",
+        color: textColor || "black",
+        border: borderColor ? `2px solid ${borderColor}` : "none",
+      };
+    }
+
+    // Otherwise use the variant system
     switch (variant) {
       case "primary":
         return {

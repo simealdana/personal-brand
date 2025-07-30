@@ -4,6 +4,7 @@ import React from "react";
 import { useTheme } from "@/lib/ui/useTheme";
 import { H1 } from "@/lib/ui/heading";
 import { Paragraph } from "@/lib/ui/text";
+import { AnimatedElement } from "@/lib/ui/animated";
 import { ProgressSteps, type Step } from "@/lib/ui/progress-steps";
 import Image from "next/image";
 import { SimpleCheckIcon } from "@/lib/ui/icons/simple-check.icon";
@@ -60,7 +61,7 @@ export default function TimelineSection() {
       style={{ backgroundColor: colors.bgSecondary }}
     >
       <div className="py-16 px-4 lg:px-8 container mx-auto">
-        <div className="text-center mb-16">
+        <AnimatedElement as="div" animation="slideUp" duration={0.6} className="text-center mb-16">
           <Paragraph
             color={colors.textSecondary}
             style={{ marginBottom: "32px" }}
@@ -80,17 +81,17 @@ export default function TimelineSection() {
               </div>
             ))}
           </div>
-        </div>
+        </AnimatedElement>
 
-        <div className="text-center my-24">
+        <AnimatedElement as="div" animation="slideUp" delay={0.2} duration={0.6} className="text-center my-24">
           <H1 bold className="mb-4">
             WHAT YOU CAN ACHIEVE IN{" "}
             <span style={{ color: colors.primary }}>30</span>{" "}
             <span style={{ color: colors.primary }}>DAYS</span> WITH ME
           </H1>
-        </div>
+        </AnimatedElement>
 
-        <div className="max-w-6xl mx-auto">
+        <AnimatedElement as="div" animation="slideUp" delay={0.4} duration={0.6} className="max-w-6xl mx-auto">
           <ProgressSteps
             steps={timelineSteps}
             currentStep={2}
@@ -98,7 +99,7 @@ export default function TimelineSection() {
             itemIcon={<SimpleCheckIcon />}
             itemClassName="font-medium"
           />
-        </div>
+        </AnimatedElement>
       </div>
     </div>
   );

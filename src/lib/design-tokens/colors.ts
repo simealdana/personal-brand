@@ -1,5 +1,6 @@
 export const colors = {
   primary: "#8C52FF",
+  lightPurple: "#B48FFF",
   textPrimary: "#000000",
   textSecondary: "#545454",
   accent: "#FD9129",
@@ -20,6 +21,7 @@ export const getColor = (color: keyof ColorToken): string => {
 
 export const colorCSSVariables = {
   "--color-primary": colors.primary,
+  "--color-light-purple": colors.lightPurple,
   "--color-text-primary": colors.textPrimary,
   "--color-text-secondary": colors.textSecondary,
   "--color-accent": colors.accent,

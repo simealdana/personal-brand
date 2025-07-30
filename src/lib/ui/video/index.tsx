@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/lib/ui/useTheme";
+import { H4 } from "@/lib/ui/heading";
 
 export interface VideoProps {
   src: string;
@@ -10,6 +12,7 @@ export interface VideoProps {
   size?: "sm" | "md" | "lg" | "xl" | "2xl";
   aspectRatio?: "video" | "square" | "custom";
   customAspectRatio?: string;
+  headerText?: string;
 }
 
 export const Video: React.FC<VideoProps> = ({
@@ -21,7 +24,9 @@ export const Video: React.FC<VideoProps> = ({
   size = "lg",
   aspectRatio = "video",
   customAspectRatio,
+  headerText,
 }) => {
+  const { colors } = useTheme();
   const getAspectRatioClass = () => {
     switch (aspectRatio) {
       case "video":
@@ -63,6 +68,48 @@ export const Video: React.FC<VideoProps> = ({
         >
           <iframe
             className="w-full h-full"
+            src={src}
+            title={title || "Video content"}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (variant === "player") {
+    return (
+      <div className={`${containerClassName} ${getSizeClass()} rounded-lg`}>
+        {headerText && (
+          <div
+            className="flex items-center justify-center py-2 px-4 rounded-t-lg "
+            style={{ backgroundColor: colors.primary }}
+          >
+            <H4
+              color="white"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                maxHeight: "2.4em",
+              }}
+            >
+              {headerText}
+            </H4>
+          </div>
+        )}
+        <motion.div
+          className={`relative w-full ${getAspectRatioClass()} bg-gray-900 overflow-hidden ${className} ${
+            headerText ? "rounded-t-none rounded-b-lg" : "rounded-lg"
+          }`}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <iframe
+            className="w-full h-full rounded-lg"
             src={src}
             title={title || "Video content"}
             frameBorder="0"

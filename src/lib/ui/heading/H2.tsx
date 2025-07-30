@@ -4,9 +4,10 @@ import { useTheme } from "../useTheme";
 interface H2Props {
   children: React.ReactNode;
   className?: string;
+  color?: string;
 }
 
-export const H2: React.FC<H2Props> = ({ children, className = "" }) => {
+export const H2: React.FC<H2Props> = ({ children, className = "", color }) => {
   const { colors, typography } = useTheme();
 
   const styles: React.CSSProperties = {
@@ -16,7 +17,7 @@ export const H2: React.FC<H2Props> = ({ children, className = "" }) => {
     fontSize: "32.4px",
     lineHeight: "33px",
     letterSpacing: typography.letterSpacing.normal,
-    color: colors.textPrimary,
+    color: color || colors.textPrimary,
     margin: 0,
     padding: 0,
   };

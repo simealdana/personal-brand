@@ -1,6 +1,11 @@
 import Hero from "@/components/LandingPage/Hero";
 import TimelineSection from "@/components/LandingPage/TimelineSection";
 import VideoSection from "@/components/LandingPage/VideoSection";
+import TestimonySection from "@/components/LandingPage/TestimonySection";
+import ExperienceSection from "@/components/LandingPage/ExperienceSection";
+import MentorshipSection from "@/components/LandingPage/MentorshipSection";
+import FAQSection from "@/components/LandingPage/FAQSection";
+import ContentSection from "@/components/LandingPage/ContentSection";
 
 export default function Home() {
   return (
@@ -9,6 +14,11 @@ export default function Home() {
         <Hero />
         <TimelineSection />
         <VideoSection />
+        <TestimonySection />
+        <ExperienceSection />
+        <MentorshipSection />
+        <ContentSection />
+        <FAQSection />
       </div>
     </div>
   );
