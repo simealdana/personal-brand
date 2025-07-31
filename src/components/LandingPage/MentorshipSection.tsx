@@ -7,6 +7,7 @@ import { Paragraph, Span } from "@/lib/ui/text";
 import { AnimatedElement } from "@/lib/ui/animated";
 import { Button } from "@/lib/ui/button";
 import { Send } from "lucide-react";
+import { useActionButton } from "@/hooks/useActionButton";
 import { PrimaryCheckIcon } from "@/lib/ui/icons";
 import Image from "next/image";
 import H2 from "../../lib/ui/heading/H2";
@@ -40,10 +41,7 @@ const mentorshipFeatures: FeatureItem[] = [
 
 export default function MentorshipSection() {
   const { colors } = useTheme();
-
-  const handleBookSession = () => {
-    console.log("Book strategy session clicked");
-  };
+  const handleAction = useActionButton();
 
   return (
     <section className="w-full bg-white py-16 px-4 lg:px-8 container mx-auto ">
@@ -147,7 +145,7 @@ export default function MentorshipSection() {
                   size="md"
                   icon={<Send size={28} />}
                   iconPosition="left"
-                  onClick={handleBookSession}
+                  onClick={handleAction}
                   className="w-full"
                   bg="white"
                   textColor={colors.primary}

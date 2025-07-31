@@ -7,6 +7,7 @@ import { Span } from "@/lib/ui/text";
 import { useTheme } from "@/lib/ui/useTheme";
 import LeadForm from "../LeadForm";
 import { useApply } from "@/hooks/api/useApply";
+import { X } from "lucide-react";
 
 interface LeadFormData {
   name: string;
@@ -48,8 +49,17 @@ export default function ModalLeadsForm({
       onClose={onClose || (() => {})}
       size="xl"
       showCloseButton={false}
-      closeOnOverlayClick={false}
+      closeOnOverlayClick={true}
     >
+      {/* Botón de cerrar súper sutil en la esquina superior derecha */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-10 p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200 opacity-60 hover:opacity-100"
+        aria-label="Close modal"
+      >
+        <X size={16} />
+      </button>
+
       <div className="mb-6 text-center space-y-2 px-8 py-4">
         <H2 className="text-sm font-medium mb-2" color={colors.primary}>
           WELL, THIS POPUP IS ALREADY POPPED UP...

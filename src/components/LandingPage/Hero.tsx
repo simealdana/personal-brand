@@ -11,9 +11,11 @@ import { PrimaryCheckIcon } from "@/lib/ui/icons";
 import Logo from "@/lib/ui/logo/logo";
 import { Send } from "lucide-react";
 import Image from "next/image";
+import { useActionButton } from "@/hooks/useActionButton";
 
 export default function Hero() {
   const { colors } = useTheme();
+  const handleAction = useActionButton();
 
   const benefitsList = [
     {
@@ -73,6 +75,7 @@ export default function Hero() {
             size="md"
             icon={<Send size={16} />}
             iconPosition="left"
+            onClick={handleAction}
           >
             <H3 color={colors.white}>
               BOOK YOUR FIRST FREE 1:1 STRATEGY SESSION

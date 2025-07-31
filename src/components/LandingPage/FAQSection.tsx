@@ -5,6 +5,7 @@ import React from "react";
 import { H1, H3 } from "@/lib/ui/heading";
 import { Button } from "@/lib/ui/button";
 import { Send } from "lucide-react";
+import { useActionButton } from "@/hooks/useActionButton";
 import { useTheme } from "@/lib/ui/useTheme";
 import { Span } from "@/lib/ui/text";
 
@@ -54,10 +55,7 @@ const faqData: FAQItem[] = [
 
 export default function FAQSection() {
   const { colors } = useTheme();
-
-  const handleBookSession = () => {
-    console.log("Book session clicked");
-  };
+  const handleAction = useActionButton();
 
   return (
     <section className="py-16 px-4 container mx-auto">
@@ -88,7 +86,7 @@ export default function FAQSection() {
             size="lg"
             icon={<Send size={24} />}
             iconPosition="left"
-            onClick={handleBookSession}
+            onClick={handleAction}
             bg={colors.primary}
             textColor="white"
             className="px-8 py-4"

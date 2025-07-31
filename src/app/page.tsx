@@ -6,7 +6,7 @@ import ExperienceSection from "@/components/LandingPage/ExperienceSection";
 import MentorshipSection from "@/components/LandingPage/MentorshipSection";
 import FAQSection from "@/components/LandingPage/FAQSection";
 import ContentSection from "@/components/LandingPage/ContentSection";
-import ModalLeadsForm from "@/components/ModalLeadsForm";
+import ModalWrapper from "@/components/ModalWrapper";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
         <MentorshipSection />
         <ContentSection />
         <FAQSection />
-        <ModalLeadsForm isOpen={true} />
+        <ModalWrapper />
       </div>
     </div>
   );

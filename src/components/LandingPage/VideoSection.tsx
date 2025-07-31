@@ -9,6 +9,7 @@ import Logo from "@/lib/ui/logo/logo";
 import { Send } from "lucide-react";
 import { Video } from "@/lib/ui/video";
 import { colors } from "@/lib/design-tokens/colors";
+import { useActionButton } from "@/hooks/useActionButton";
 
 const VIDEO_CONFIG = {
   src: "https://www.youtube.com/embed/VeNvjblXxCg",
@@ -18,11 +19,8 @@ const VIDEO_CONFIG = {
   size: "lg" as const,
 };
 
-const handleBookSession = () => {
-  console.log("Book session clicked");
-};
-
 export default function VideoSection() {
+  const handleAction = useActionButton();
   return (
     <div className="w-full py-16 px-4 lg:px-8 container mx-auto">
       <div className="max-w-4xl mx-auto text-center">
@@ -81,7 +79,7 @@ export default function VideoSection() {
               size="lg"
               icon={<Send size={20} />}
               iconPosition="left"
-              onClick={handleBookSession}
+              onClick={handleAction}
               className="w-full"
             >
               <H3 color={colors.white}>

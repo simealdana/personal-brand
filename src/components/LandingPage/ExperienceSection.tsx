@@ -8,6 +8,7 @@ import { Button } from "@/lib/ui/button";
 import { ProgressSteps, Step } from "@/lib/ui/progress-steps";
 
 import { Send } from "lucide-react";
+import { useActionButton } from "@/hooks/useActionButton";
 
 const experienceSteps: Step[] = [
   {
@@ -33,10 +34,7 @@ const experienceSteps: Step[] = [
 
 export default function ExperienceSection() {
   const { colors } = useTheme();
-
-  const handleBookSession = () => {
-    console.log("Book strategy session clicked");
-  };
+  const handleAction = useActionButton();
 
   return (
     <section className="w-full bg-white py-16 px-4 lg:px-8 container mx-auto">
@@ -93,7 +91,7 @@ export default function ExperienceSection() {
             size="lg"
             icon={<Send size={20} />}
             iconPosition="left"
-            onClick={handleBookSession}
+            onClick={handleAction}
             className="px-8 py-4 text-lg font-bold"
           >
             <H3 color={colors.white}>
