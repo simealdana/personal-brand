@@ -20,7 +20,7 @@ export default function Hero() {
       text: "1:1 sessions to build your AI agent; step-by-step, together",
     },
     {
-      text: "Unlimited & personalized support between calls",
+      text: "Unlimited chat support between calls",
     },
     {
       text: "Launch a ready-to-sell AI agent in just 4 weeks",
@@ -84,7 +84,14 @@ export default function Hero() {
             </ArchitectsDaughterText>
           </div>
 
-          <Personal {...danielTestimony} />
+          <div>
+            <a
+              href="https://upwork.com/freelancers/danielgraversen"
+              target="_blank"
+            >
+              <Personal {...danielTestimony} />
+            </a>
+          </div>
         </div>
 
         <div className="w-full">
