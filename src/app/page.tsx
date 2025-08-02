@@ -8,6 +8,8 @@ import FAQSection from "@/components/LandingPage/FAQSection";
 import ContentSection from "@/components/LandingPage/ContentSection";
 import ModalWrapper from "@/components/ModalWrapper";
 
+const DISPLAY_TESTIMONY = false;
+
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -15,7 +17,7 @@ export default function Home() {
         <Hero />
         <TimelineSection />
         <VideoSection />
-        <TestimonySection />
+        {DISPLAY_TESTIMONY && <TestimonySection />}
         <ExperienceSection />
         <MentorshipSection />
         <ContentSection />
