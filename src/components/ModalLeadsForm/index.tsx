@@ -56,7 +56,7 @@ export default function ModalLeadsForm({
         <X size={16} />
       </button>
 
-      <div className="mb-6 text-center space-y-2 px-8 py-4">
+      <div className="mb-6 text-center space-y-2 px-8">
         <H2 className="text-sm font-medium mb-2" color={colors.primary}>
           WELL, THIS POPUP IS ALREADY POPPED UP...
         </H2>

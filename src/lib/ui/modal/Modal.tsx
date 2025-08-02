@@ -84,7 +84,7 @@ export const Modal: React.FC<ModalProps> = ({
       <div className="absolute inset-0 bg-black bg-opacity-50" />
 
       <div
-        className={`relative bg-white rounded-lg shadow-xl w-full ${getSizeClasses()} ${className}`}
+        className={`relative bg-white rounded-lg shadow-xl w-full max-h-[80vh] overflow-y-auto ${getSizeClasses()} ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         {(title || showCloseButton) && (
