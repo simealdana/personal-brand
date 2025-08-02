@@ -120,9 +120,7 @@ export default function RootLayout({
             }
             @media (max-width: 768px) {
               elevenlabs-convai {
-                --elevenlabs-convai-bottom: 100px !important;
-                --elevenlabs-convai-right: 10px !important;
-                --elevenlabs-convai-size: 50px !important;
+                display: none !important;
               }
               .hide-on-download-mobile elevenlabs-convai {
                 display: none !important;
