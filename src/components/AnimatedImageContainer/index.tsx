@@ -34,21 +34,21 @@ export const AnimatedImageContainer: React.FC<AnimatedImageContainerProps> = ({
       case "sm":
         return {
           borderRadius: "60% 40% 70% 30% / 60% 30% 70% 40%",
-          width: fill ? "100%" : "250px",
-          height: fill ? "100%" : "250px",
+          width: fill ? "100%" : "min(250px, 90vw)",
+          height: fill ? "100%" : "min(250px, 90vw)",
         };
       case "lg":
         return {
           borderRadius: "60% 40% 70% 30% / 60% 30% 70% 40%",
-          width: fill ? "100%" : "700px",
-          height: fill ? "100%" : "900px",
+          width: fill ? "100%" : "min(700px, 90vw)",
+          height: fill ? "100%" : "min(900px, 90vh)",
         };
       case "md":
       default:
         return {
           borderRadius: "60% 40% 70% 30% / 60% 30% 70% 40%",
-          width: fill ? "100%" : "400px",
-          height: fill ? "100%" : "500px",
+          width: fill ? "100%" : "min(400px, 90vw)",
+          height: fill ? "100%" : "min(500px, 90vh)",
         };
     }
   };
@@ -67,8 +67,12 @@ export const AnimatedImageContainer: React.FC<AnimatedImageContainerProps> = ({
       <div
         className="relative overflow-hidden"
         style={{
-          width: customSize?.width || sizeStyles.width,
-          height: customSize?.height || sizeStyles.height,
+          width: customSize?.width
+            ? `min(${customSize.width}px, 90vw)`
+            : sizeStyles.width,
+          height: customSize?.height
+            ? `min(${customSize.height}px, 90vh)`
+            : sizeStyles.height,
           borderRadius: sizeStyles.borderRadius,
           boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)",
         }}
@@ -114,8 +118,22 @@ export const AnimatedImageContainer: React.FC<AnimatedImageContainerProps> = ({
           <Image
             src={src}
             alt={alt}
-            width={customSize?.width || Number(sizeStyles.width)}
-            height={customSize?.height || Number(sizeStyles.height)}
+            width={
+              customSize?.width ||
+              (sizeStyles.width === "min(250px, 90vw)"
+                ? 250
+                : sizeStyles.width === "min(400px, 90vw)"
+                ? 400
+                : 700)
+            }
+            height={
+              customSize?.height ||
+              (sizeStyles.height === "min(250px, 90vw)"
+                ? 250
+                : sizeStyles.height === "min(500px, 90vh)"
+                ? 500
+                : 900)
+            }
             className={`object-cover w-full h-full transition-opacity duration-500 ${
               imageLoaded ? "opacity-100" : "opacity-0"
             }`}
@@ -127,7 +145,7 @@ export const AnimatedImageContainer: React.FC<AnimatedImageContainerProps> = ({
         <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/80 via-transparent to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-blue-950/80"></div>
       </div>
-      <div className="absolute -inset-10 bg-blue-500/5 blur-3xl rounded-full"></div>
+      <div className="absolute -inset-4 bg-blue-500/5 blur-3xl rounded-full"></div>
     </motion.div>
   );
 };

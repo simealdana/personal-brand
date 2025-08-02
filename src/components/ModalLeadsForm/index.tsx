@@ -1,0 +1,81 @@
+"use client";
+
+import React from "react";
+import { useRouter } from "next/navigation";
+import { Modal } from "@/lib/ui/modal";
+import { H2 } from "@/lib/ui/heading";
+import { Span } from "@/lib/ui/text";
+import { useTheme } from "@/lib/ui/useTheme";
+import LeadForm from "../LeadForm";
+import { useApply } from "@/hooks/api/useApply";
+import { X } from "lucide-react";
+
+interface LeadFormData {
+  name: string;
+  email: string;
+  hasIdea: string;
+  budget: string;
+}
+
+interface ModalLeadsFormProps {
+  isOpen: boolean;
+  onClose?: () => void;
+}
+
+export default function ModalLeadsForm({
+  isOpen,
+  onClose,
+}: ModalLeadsFormProps) {
+  const { colors } = useTheme();
+  const { submitApplication, isLoading } = useApply();
+  const router = useRouter();
+
+  const handleSubmit = async (data: LeadFormData) => {
+    try {
+      await submitApplication(data);
+
+      router.push("/mentorship-application");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose || (() => {})}
+      size="xl"
+      showCloseButton={false}
+      closeOnOverlayClick={true}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-10 p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200 opacity-60 hover:opacity-100"
+        aria-label="Close modal"
+      >
+        <X size={16} />
+      </button>
+
+      <div className="mb-6 text-center space-y-2 px-8 py-4">
+        <H2 className="text-sm font-medium mb-2" color={colors.primary}>
+          WELL, THIS POPUP IS ALREADY POPPED UP...
+        </H2>
+
+        <H2 className="mb-2">
+          SO YOU MIGHT ASWELL CLAIM YOUR{" "}
+          <span className="underline whitespace-nowrap">
+            FREE STRATEGY SESSION
+          </span>
+          👇.
+        </H2>
+
+        <Span>
+          *Only schedule a call if you&apos;re ready to build a sellable
+          AI-Agent.
+        </Span>
+      </div>
+
+      <LeadForm onSubmit={handleSubmit} isLoading={isLoading} />
+    </Modal>
+  );
+}
