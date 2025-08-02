@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { emailService } from "@/lib/email/service";
 
 interface LeadFormData {
   name: string;
@@ -39,6 +40,15 @@ export const useApply = () => {
 
       if (!response.ok) {
         throw new Error(data.error || "Failed to submit application");
+      }
+
+      try {
+        await emailService.sendFormCompletionEmail({
+          name: formData.name,
+          email: formData.email,
+        });
+      } catch (emailError) {
+        console.error("Failed to send form completion email:", emailError);
       }
 
       setSuccess(true);

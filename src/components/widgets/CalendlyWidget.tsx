@@ -1,35 +1,21 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { InlineWidget, useCalendlyEventListener } from "react-calendly";
+import { InlineWidget } from "react-calendly";
 import { colors } from "@/lib/design-tokens/colors";
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
+import { useCalendlyEvent } from "@/hooks/useCalendlyEvent";
+import { calendlyConfig } from "@/lib/config/calendly";
 
 export default function CalendlyWidget() {
-  const router = useRouter();
-
-  useCalendlyEventListener({
-    onEventScheduled: () => {
-      if (typeof window !== "undefined" && window.gtag) {
-        window.gtag("event", "calendly_event_scheduled", {
-          event_category: "mentorship",
-          event_label: "1-1-ai-agent-mentorship",
-          value: 1,
-        });
-      }
-      router.push("/mentorship-application/confirmation");
+  useCalendlyEvent({
+    onError: (error) => {
+      console.error("Calendly event error:", error.message);
     },
   });
 
   return (
     <div className="w-full max-w-4xl mx-auto">
       <InlineWidget
-        url="https://calendly.com/simeon-cover-io/1-1-ai-agent-mentorship"
+        url={calendlyConfig.eventTypes.mentorship}
         styles={{
           height: "700px",
           minWidth: "300px",

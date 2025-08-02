@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Modal } from "@/lib/ui/modal";
 import { H2 } from "@/lib/ui/heading";
 import { Span } from "@/lib/ui/text";
@@ -19,25 +20,21 @@ interface LeadFormData {
 interface ModalLeadsFormProps {
   isOpen: boolean;
   onClose?: () => void;
-  onSubmit?: (data: LeadFormData) => void;
 }
 
 export default function ModalLeadsForm({
   isOpen,
   onClose,
-  onSubmit,
 }: ModalLeadsFormProps) {
   const { colors } = useTheme();
   const { submitApplication, isLoading } = useApply();
+  const router = useRouter();
 
   const handleSubmit = async (data: LeadFormData) => {
     try {
-      if (onSubmit) {
-        await onSubmit(data);
-      } else {
-        await submitApplication(data);
-      }
-      onClose?.();
+      await submitApplication(data);
+
+      router.push("/mentorship-application");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -51,7 +48,6 @@ export default function ModalLeadsForm({
       showCloseButton={false}
       closeOnOverlayClick={true}
     >
-      {/* Botón de cerrar súper sutil en la esquina superior derecha */}
       <button
         onClick={onClose}
         className="absolute top-4 right-4 z-10 p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200 opacity-60 hover:opacity-100"
