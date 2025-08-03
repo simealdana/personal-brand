@@ -1,3 +1,5 @@
+import { EmailType } from "@/types";
+
 export interface EmailTemplateData {
   name: string;
   email: string;
@@ -16,16 +18,71 @@ export interface EmailConfig {
   template: string;
 }
 
-export const EMAIL_TEMPLATES: Record<string, EmailConfig> = {
-  formCompletion: {
+export const EMAIL_TEMPLATES: Record<EmailType, EmailConfig> = {
+  FORM_FOLLOWUP_1: {
     subject: "{{First.name}}? Open up",
     from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
-    template: "formCompletion",
+    template: "FORM_FOLLOWUP_1",
   },
-  bookingConfirmation: {
+  CALL_CONFIRMATION: {
     subject: "Your 1:1 strategy session is confirmed ✅",
     from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
     template: "bookingConfirmation",
+  },
+  FORM_FOLLOWUP_2: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "FORM_FOLLOWUP_2",
+  },
+  CALL_REMINDER_24H: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "CALL_REMINDER_24H",
+  },
+  CALL_REMINDER_2H: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "CALL_REMINDER_2H",
+  },
+  NO_SHOW_FOLLOWUP: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "NO_SHOW_FOLLOWUP",
+  },
+  NURTURE_1: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "NURTURE_1",
+  },
+  NURTURE_2: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "NURTURE_2",
+  },
+  NURTURE_3: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "NURTURE_3",
+  },
+  NURTURE_MONTHLY_1: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "NURTURE_MONTHLY_1",
+  },
+  NURTURE_MONTHLY_2: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "NURTURE_MONTHLY_2",
+  },
+  REFERRAL_FEEDBACK: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "REFERRAL_FEEDBACK",
+  },
+  REFERRAL_PROGRAM: {
+    subject: "{{First.name}}? Open up",
+    from: process.env.EMAIL_FROM || "Simeon <noreply@yourdomain.com>",
+    template: "REFERRAL_PROGRAM",
   },
 };
 
@@ -33,13 +90,13 @@ export function generateEmailHTML(
   template: string,
   data: EmailTemplateData
 ): string {
-  switch (template) {
-    case "formCompletion":
+  switch (template as EmailType) {
+    case "FORM_FOLLOWUP_1":
       return generateFormCompletionEmailHTML(data.name);
-    case "bookingConfirmation":
+    case "CALL_CONFIRMATION":
       return generateBookingConfirmationEmailHTML(data.name);
     default:
-      throw new Error(`Unknown email template: ${template}`);
+      return generateFormCompletionEmailHTML(data.name);
   }
 }
 
