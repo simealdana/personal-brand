@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 import { useCalendlyEventListener } from "react-calendly";
-import { emailService } from "@/lib/email/service";
 import { calendlyConfig } from "@/lib/config/calendly";
 
 declare global {
@@ -26,7 +25,6 @@ export interface UseCalendlyEventOptions {
   onError?: (error: Error) => void;
   redirectTo?: string;
   enableAnalytics?: boolean;
-  enableEmailConfirmation?: boolean;
   emailTemplate?: string;
 }
 
@@ -37,7 +35,6 @@ export function useCalendlyEvent(options: UseCalendlyEventOptions = {}) {
     onError,
     redirectTo = calendlyConfig.redirects.confirmation,
     enableAnalytics = true,
-    enableEmailConfirmation = calendlyConfig.email.enabled,
   } = options;
 
   useCalendlyEventListener({
@@ -60,29 +57,29 @@ export function useCalendlyEvent(options: UseCalendlyEventOptions = {}) {
           throw new Error("Invalid Calendly URIs");
         }
 
-        const response = await fetch("/api/calendly-invitee", {
+        const response = await fetch("/api/leads/calendly-booking", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ eventUuid, inviteeUuid }),
         });
 
         if (!response.ok) {
-          throw new Error(`Failed to fetch invitee data: ${response.status}`);
+          throw new Error(
+            `Failed to process Calendly booking: ${response.status}`
+          );
         }
 
-        const inviteeData: CalendlyInviteeData = await response.json();
+        const bookingData = await response.json();
 
         if (onEventScheduled) {
+          const inviteeData: CalendlyInviteeData = {
+            email: bookingData.data.email,
+            name: bookingData.data.name,
+            timezone: "America/Mexico_City",
+            eventStartTime: bookingData.data.event_start,
+            eventEndTime: bookingData.data.event_end,
+          };
           await onEventScheduled(inviteeData);
-        }
-
-        if (enableEmailConfirmation) {
-          const emailResult = await emailService.sendBookingConfirmationEmail(
-            inviteeData
-          );
-          if (!emailResult.success) {
-            throw new Error(`Email sending failed: ${emailResult.error}`);
-          }
         }
 
         router.push(redirectTo);
