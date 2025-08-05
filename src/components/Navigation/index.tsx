@@ -10,7 +10,7 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleGetAccess = () => {
-    window.location.href = "/apply";
+    window.location.href = "/?leads-form=true";
   };
 
   // const handleGoToTool = (type: string) => {

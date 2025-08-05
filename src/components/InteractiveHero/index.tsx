@@ -43,7 +43,7 @@ const InteractiveHero = () => {
   }, []);
 
   const handleApplyNow = () => {
-    window.location.href = "/apply";
+    window.location.href = "/?leads-form=true";
   };
 
   return (

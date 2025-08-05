@@ -59,7 +59,7 @@ const CombinedMentorshipVideoSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="group px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-700 transition-all flex items-center gap-3 mx-auto shadow-lg"
-              onClick={() => (window.location.href = "/apply")}
+              onClick={() => (window.location.href = "/?leads-form=true")}
             >
               Apply for AI Mentorship
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

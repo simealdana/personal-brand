@@ -140,7 +140,7 @@ const PricingSection = () => {
                   </div>
                   <div className="text-blue-200 mb-6">Apply to see pricing</div>
                   <a
-                    href="/apply"
+                    href="/?leads-form=true"
                     className="inline-block px-8 py-3 bg-white text-blue-700 font-bold rounded-full hover:bg-blue-50 transition-colors"
                   >
                     Apply Now — Only 12 Spots

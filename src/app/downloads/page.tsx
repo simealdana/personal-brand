@@ -32,7 +32,7 @@ export default async function DownloadsPage() {
                 career.
               </p>
               <Link
-                href="/apply"
+                href="/?leads-form=true"
                 className="group px-6 py-3 bg-white text-blue-600 rounded-full font-bold hover:bg-opacity-90 transition-all flex items-center gap-2 inline-flex"
               >
                 Get Access
