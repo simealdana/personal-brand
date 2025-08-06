@@ -5,14 +5,15 @@ import { useTheme } from "@/lib/ui/useTheme";
 import { H1 } from "@/lib/ui/heading";
 import { Paragraph } from "@/lib/ui/text";
 import { AnimatedElement } from "@/lib/ui/animated";
-import { Video } from "@/lib/ui/video";
 import { motion } from "framer-motion";
+import { YouTubeEmbed } from "@/lib/ui/embed";
 
 interface StudentProject {
   id: string;
   studentName: string;
   projectTitle: string;
   videoUrl: string;
+  display: boolean;
 }
 
 const studentProjects: StudentProject[] = [
@@ -21,29 +22,35 @@ const studentProjects: StudentProject[] = [
     studentName: "MIKE M",
     projectTitle: "BUILDING A VIDEO GENERATION AGENT",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    display: false,
   },
   {
     id: "2",
     studentName: "HEDIYE M",
     projectTitle: "LEARNING TO USE LANGCHAIN AND LANGGRAPH WITH PYTHON",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    display: false,
   },
   {
     id: "3",
     studentName: "LEONEL P",
     projectTitle: "HE IS BUILDING A LAW-SPECIALIZED RAG CHATBOT",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "8TfJYEiRyOs",
+    display: true,
   },
   {
     id: "4",
     studentName: "RAMPHIS R",
     projectTitle: "BUILDING A DOCTOR'S ASSISTANT",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "QQPhYoNoGFc",
+    display: true,
   },
 ];
 
 export default function TestimonySection() {
   const { colors } = useTheme();
+
+  const filteredProjects = studentProjects.filter((project) => project.display);
 
   return (
     <section className="w-full bg-white py-16 px-4 lg:px-8 container mx-auto">
@@ -67,22 +74,21 @@ export default function TestimonySection() {
         </AnimatedElement>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto justify-items-center md:justify-items-stretch mt-6">
-          {studentProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="group cursor-pointer w-full max-w-sm md:max-w-none"
+              className="group cursor-pointer w-full max-w-sm md:max-w-none h-[315px]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
-              <Video
-                src={project.videoUrl}
+              <YouTubeEmbed
+                videoId={project.videoUrl}
+                width={560}
+                height={315}
                 title={project.projectTitle}
-                variant="player"
-                size="md"
-                containerClassName="w-full"
-                headerText={`${project.studentName}: "${project.projectTitle}"`}
+                className="w-full h-full"
               />
             </motion.div>
           ))}

@@ -9,7 +9,7 @@ import FAQSection from "@/components/LandingPage/FAQSection";
 import ContentSection from "@/components/LandingPage/ContentSection";
 import ModalWrapper from "@/components/ModalWrapper";
 
-const DISPLAY_TESTIMONY = false;
+const DISPLAY_TESTIMONY = true;
 
 export default function Home() {
   return (
